@@ -1,6 +1,6 @@
 zabbix_export:
   version: '6.0'
-  date: '2023-03-10T13:15:28Z'
+  date: '2023-03-10T23:31:53Z'
   groups:
     -
       uuid: 57b7ae836ca64446ba2c296389c009b7
@@ -26,7 +26,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.3.1.1.0
           key: ADVANTECH-COMMON-MIB.psNumber
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of the psTable'
@@ -40,7 +40,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.2.1.1.0
           key: ADVANTECH-COMMON-MIB.snmpTrapSrvNumber
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of the snmpTrapSrvTable'
@@ -54,7 +54,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.8.0
           key: ADVANTECH-COMMON-MIB.sysBootCount
-          delay: '60'
+          delay: 1d
           history: 30d
           units: /sec
           description: 'The boot count since the entity/device was first boot.'
@@ -73,7 +73,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.7.0
           key: ADVANTECH-COMMON-MIB.sysBootTime
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -88,7 +88,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.3.0
           key: ADVANTECH-COMMON-MIB.sysDescr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -103,7 +103,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.2.0
           key: ADVANTECH-COMMON-MIB.sysDeviceName
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -118,7 +118,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.6.0
           key: ADVANTECH-COMMON-MIB.sysFirstBootTime
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -133,7 +133,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.4.0
           key: ADVANTECH-COMMON-MIB.sysImageVersion
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -148,7 +148,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.1.0
           key: ADVANTECH-COMMON-MIB.sysModuleID
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -163,7 +163,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.100.1.5.0
           key: ADVANTECH-COMMON-MIB.sysReleaseDate
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -178,7 +178,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.1.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.accessibleIp
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -193,7 +193,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.1.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.allowAnyIp
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Allowed all IP address can access the device or onlt one IP can access the device.'
@@ -207,7 +207,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.2.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.authenFail
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -224,7 +224,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.4.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.beginDLSDate
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The begin day of daylight saving function.'
@@ -238,7 +238,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.4.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.beginDLSMouth
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The begin mouth of daylight saving function.'
@@ -252,7 +252,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.coldStart
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -269,7 +269,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.currentTime
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -284,7 +284,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.1.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.ddnsAlias
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -299,7 +299,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.1.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.ddnsPrvdr
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Enable the DDNS function and select the DDNS provider.'
@@ -315,7 +315,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.1.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.ddnsUsrName
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -330,7 +330,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.1.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.deviceDescrip
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -344,7 +344,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.4.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.eap11w
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Management frame protection of WPA-enterprise encryption.'
@@ -360,7 +360,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.4.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.eapIdentity
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -375,7 +375,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.4.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.eapMethod
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The EAP method of WPA-enterprise encryption.'
@@ -391,7 +391,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.4.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.eapPassphrase
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -406,7 +406,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.4.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.eapPhase2
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The inner authentication when using TTLS EAP method in WPA-enterprise.'
@@ -422,7 +422,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.enableModTime
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Enable time modifed function.'
@@ -438,7 +438,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.3.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.enableNTP
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'enable Network Time Protocol'
@@ -454,7 +454,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.1.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.enableSNMPService
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'enable SNMP service on the device.'
@@ -470,7 +470,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.1.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.enableTelnetService
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'enable telnet service on the device.'
@@ -486,7 +486,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.1.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.enableWebService
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'enable web service on the device.'
@@ -502,7 +502,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.4.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.enbaleDLS
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'enable DayLightSaving'
@@ -518,7 +518,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.encryption
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: Encryption
@@ -534,7 +534,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.4.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.endDLSDate
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The end day of daylight saving function.'
@@ -548,7 +548,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.4.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.endDLSMouth
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The end mouth of daylight saving function.'
@@ -562,7 +562,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.2.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.eth1Down
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -579,7 +579,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.2.7.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.eth2Down
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -596,7 +596,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.fragmentThreshold
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Fragment threshold (in ms)'
@@ -610,7 +610,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.3.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.fwRuleNumber
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of NAT Rule'
@@ -624,7 +624,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.3.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.gprsGateway
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Enable default gateway via 3G/GPRS or OpenVPN.'
@@ -640,7 +640,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.2.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.gprsISPName
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -655,7 +655,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.2.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.gprsNum
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of GPRS setting.'
@@ -669,7 +669,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.gprsOperMode
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The operation mode of GPRS. If user select the sms mode, user cannot connect to network.'
@@ -685,7 +685,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.2.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.ipChange
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -702,7 +702,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.2.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.modTimeDay
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The current day is in the device. After enable enableModTime, this value can set into device.'
@@ -716,7 +716,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.2.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.modTimeHour
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The current hour is in the device. After enable enableModTime, this value can set into device.'
@@ -730,7 +730,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.2.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.modTimeMin
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The current minute is in the device. After enable enableModTime, this value can set into device.'
@@ -744,7 +744,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.2.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.modTimeMonth
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The current month is in the device. After enable enableModTime, this value can set into device.'
@@ -758,7 +758,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.2.7.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.modTimeSec
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The current second is in the device. After enable enableModTime, this value can set into device.'
@@ -772,7 +772,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.2.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.modTimeYear
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The current year is in the device. After enable enableModTime, this value can set into device.'
@@ -786,7 +786,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.2.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.openvpnCertif
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'OpenVPN Certificate Type'
@@ -802,7 +802,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.2.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.openvpnCipher
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'OpenVPN Cipher Selection'
@@ -818,7 +818,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.2.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.openvpnProtocol
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'OpenVPN Protocol'
@@ -834,7 +834,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.2.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.openvpnSrvrIP
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -849,7 +849,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.2.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.openvpnSrvrPort
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'OpenVPN Server Port'
@@ -863,7 +863,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.openvpnStatus
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'OpenVPN Status'
@@ -879,7 +879,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.2.7.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.openvpnUsrName
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -894,7 +894,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.preamble
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Preamble setting'
@@ -910,7 +910,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.2.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.pswChange
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -927,7 +927,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.roaming
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Enable/ disable roaming'
@@ -943,7 +943,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.rssiHysterisis
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'RSSI hysteresis'
@@ -957,7 +957,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.rssiThreshold
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'RSSI threshold, which is the minimum RSSI that is allowed before the client should roam to a better access point.'
@@ -971,7 +971,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.rtsThreshold
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'RTS threshold. The accecptable value is 256 - 2346.'
@@ -985,7 +985,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.7.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.scanIntervalHigh
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Scan interval when signal level is higher than RSSI threshold'
@@ -999,7 +999,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.3.8.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.scanIntervalLow
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Scan interval when signal level is lower than RSSI threshold'
@@ -1013,7 +1013,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.1.7.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.smsAlertNumber
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of SMS alert cellular phone.'
@@ -1027,7 +1027,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.1.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.smtpFromMailAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1042,7 +1042,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.1.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.smtpMailPassword
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1057,7 +1057,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.1.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.smtpMailSrv
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1072,7 +1072,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.1.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.smtpMailUser
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1087,7 +1087,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.3.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.sNTPServer
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1102,7 +1102,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.timeZone
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'UTC Timezone.'
@@ -1118,7 +1118,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.1.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.toMailAddrNumber
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of email address to notifiy'
@@ -1132,7 +1132,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.uartNumber
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of ports (regardless of their current state) in the RS-232-like general port table.'
@@ -1146,7 +1146,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.2.3.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.vsulSrvNumber
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The number of virtual server.'
@@ -1160,7 +1160,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.3.3.2.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.warmStart
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1177,7 +1177,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.2.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wepAuthAlg
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The authenticate algorithm of WEP encryption'
@@ -1193,7 +1193,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.2.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wepKey
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1208,7 +1208,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.2.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wepKeyFormat
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The key format of WEP key.'
@@ -1224,7 +1224,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.2.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wepKeyIndex
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The WEP key index'
@@ -1238,7 +1238,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.1.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanChannel
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting channel'
@@ -1254,7 +1254,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.1.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanCountryCode
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: Countrycode
@@ -1270,7 +1270,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.4.7.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanDHCPtimeout
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The DHCP client timeout'
@@ -1284,7 +1284,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.4.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanDNS1
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1299,7 +1299,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.4.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanDNS2
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1314,7 +1314,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.4.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanDNSmode
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The DNS mode of WLAN.'
@@ -1330,7 +1330,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.4.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanIPaddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1345,7 +1345,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.4.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanIPmode
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'IP mode of WLAN.'
@@ -1361,7 +1361,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.1.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanMode
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'mode for wireless setting'
@@ -1377,7 +1377,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.4.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanNetmask
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1392,7 +1392,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.1.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanSSID
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1407,7 +1407,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatBSSID
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1422,7 +1422,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.2.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatFrequency
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Current working frequency'
@@ -1436,7 +1436,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.5.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatRSSI
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Current RSSI , return 0 when is not connected to AP'
@@ -1450,7 +1450,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.9.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatRxBytes
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Receive bytes of WLAN'
@@ -1464,7 +1464,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.8.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatRxPackets
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Receive packets of WLAN'
@@ -1478,7 +1478,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.4.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatSignal
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Current signal level , return 0 when is not connected to AP'
@@ -1492,7 +1492,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.7.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatTxBytes
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Transmission bytes of WLAN'
@@ -1506,7 +1506,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.6.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatTxPackets
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Transmission packets of WLAN'
@@ -1520,7 +1520,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.5.3.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wlanStatTXpower
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Current transmission power'
@@ -1534,7 +1534,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.10297.201.1.1.3.2.3.1.0
           key: ADVANTECH-EKI-DEVICESERVER-MIB.wpaKey
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1562,8 +1562,6 @@ zabbix_export:
                   connectors. The value for each port must remain constant 
                   at least from one re-initialization of the network 
                   management agent to the next.
-            
-            
           logtimefmt: 'hh:mm:ss dd/MM/yyyy'
           tags:
             -
@@ -1588,8 +1586,6 @@ zabbix_export:
                   connectors. The value for each port must remain constant 
                   at least from one re-initialization of the network 
                   management agent to the next.
-            
-            
           logtimefmt: 'hh:mm:ss dd/MM/yyyy'
           tags:
             -
@@ -1618,6 +1614,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#SNMPVALUE},.1.3.6.1.4.1.10297.100.3.1.2.1.6,{#PSMODULEPORTS},.1.3.6.1.4.1.10297.100.3.1.2.1.19,{#PSMODULETYPE},.1.3.6.1.4.1.10297.100.3.1.2.1.18,{#PSSTATE},.1.3.6.1.4.1.10297.100.3.1.2.1.17,{#PSIRQ},.1.3.6.1.4.1.10297.100.3.1.2.1.16]'
           key: ADVANTECH-COMMON-MIB.pciSlotEntry
           delay: 1d
+          status: DISABLED
           description: 'PCI slot entry. Contains the information of PCI devices.'
           item_prototypes:
             -
@@ -1626,7 +1623,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.14.{#SNMPINDEX}'
               key: 'psBaseAddress[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1641,7 +1638,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.2.{#SNMPINDEX}'
               key: 'psBusIndex[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The PCI Bus number'
@@ -1655,7 +1652,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.11.{#SNMPINDEX}'
               key: 'psClassCode[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1670,7 +1667,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.6.{#SNMPINDEX}'
               key: 'psDescr[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1685,7 +1682,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.8.{#SNMPINDEX}'
               key: 'psDeviceID[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Identifies the particular device. This identier is allocated by the vendor. The following is the Advantech PCI Device ID. Device ID Description ------------- ----------------------- 49154(0xC002) CAN 2 Ports(I/O) 49666(0xC202) CAN 2 Ports(memory) 49410(0xC102) CANopen 2 ports(I/O) 49666(0xC202) CANopen 2 ports(memory) 4097(0x1001) NVRAM 40964(0xA004) COM950 4 Ports 61952(0xF200) PCIe 2 COM950 Ports 62208(0xF300) PCIe 4 COM950 Ports 62464(0xF400) PCIe 8 COM950 Ports 43041(0xA821) PCIe 1 COM17V25x Port 43042(0xA822) PCIe 2 COM17V25x Ports 43043(0xA823) PCIe 3 COM17V25x Ports 43044(0xA824) PCIe 4 COM17V25x Ports 43048(0xA828) PCIe 8 COM17V25x Ports 43057(0xA831) PCIe 1 COM17V35x Port 43058(0xA832) PCIe 2 COM17V35x Ports 43059(0xA833) PCIe 3 COM17V35x Ports 43060(0xA834) PCIe 4 COM17V35x Ports 43064(0xA838) PCIe 8 COM17V35x Ports'
@@ -1699,7 +1696,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.3.{#SNMPINDEX}'
               key: 'psDeviceIndex[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The PCI device or slot number that this entry describes.'
@@ -1713,7 +1710,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.5.{#SNMPINDEX}'
               key: 'psDisplayName[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1728,7 +1725,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.4.{#SNMPINDEX}'
               key: 'psFunctionIndex[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The PCI function number that this entry describes.'
@@ -1742,7 +1739,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.1.{#SNMPINDEX}'
               key: 'psIndex[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'This object contains the index of the table being a unique value for each entry.'
@@ -1756,7 +1753,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.16.{#SNMPINDEX}'
               key: 'psIRQ[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'which interrupt pin the device uses.'
@@ -1770,7 +1767,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.15.{#SNMPINDEX}'
               key: 'psLength[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1785,7 +1782,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.13.{#SNMPINDEX}'
               key: 'psLocation[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1800,7 +1797,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.12.{#SNMPINDEX}'
               key: 'psManufacturer[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1815,7 +1812,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.19.{#SNMPINDEX}'
               key: 'psModulePorts[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port/ring/axis total number ports of the module'
@@ -1829,7 +1826,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.18.{#SNMPINDEX}'
               key: 'psModuleType[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The module function type'
@@ -1845,7 +1842,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.17.{#SNMPINDEX}'
               key: 'psState[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The PCI device enable status'
@@ -1861,7 +1858,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.10.{#SNMPINDEX}'
               key: 'psSubsysDeviceID[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Identifies the particular device subsystem. This identier is allocated by the vendor. Subsystem Device ID Description ------------------- -------------------------------------- 4097(0x1001) NVRAM with KW 4113(0x1011) NVRAM without KW'
@@ -1875,7 +1872,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.9.{#SNMPINDEX}'
               key: 'psSubsysVendorID[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Identifies the manufacturer subsystem of the device. 65535(0xFFFF) is an invalid value for a vendor ID. Subsys Vendor ID Manufacturer ---------------- ------------ 5118(0x13FE) Advantech Co.'
@@ -1889,7 +1886,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.3.1.2.1.7.{#SNMPINDEX}'
               key: 'psVendorID[{#SNMPVALUE}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Identifies the manufacturer of the device. 65535(0xFFFF) is an invalid value for a vendor ID. Vendor ID Manufacturer ------------- ------------ 5118(0x13FE) Advantech Co.'
@@ -1904,6 +1901,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#SNMPTRAPVERSION},.1.3.6.1.4.1.10297.100.2.1.2.1.6,{#SNMPTRAPSRVCOMMUNITY},.1.3.6.1.4.1.10297.100.2.1.2.1.5,{#SNMPTRAPSRVAUTHENTICATION},.1.3.6.1.4.1.10297.100.2.1.2.1.4,{#SNMPTRAPSRVPORT},.1.3.6.1.4.1.10297.100.2.1.2.1.3]'
           key: ADVANTECH-COMMON-MIB.snmpTrapSrvEntry
           delay: 1d
+          status: DISABLED
           description: 'SNMP Trap server entry. Contains the IP address of a SNMP Trap server'
           item_prototypes:
             -
@@ -1912,7 +1910,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.2.1.2.1.4.{#SNMPINDEX}'
               key: 'snmpTrapSrvAuthentication[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'This parameter enables authentication traps.'
@@ -1928,7 +1926,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.2.1.2.1.5.{#SNMPINDEX}'
               key: 'snmpTrapSrvCommunity[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1943,7 +1941,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.2.1.2.1.1.{#SNMPINDEX}'
               key: 'snmpTrapSrvIndex[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'This object contains the index of the table being a unique value for each entry.'
@@ -1957,7 +1955,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.2.1.2.1.2.{#SNMPINDEX}'
               key: 'snmpTrapSrvIP[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -1972,7 +1970,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.2.1.2.1.3.{#SNMPINDEX}'
               key: 'snmpTrapSrvPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port number for the SNMP Trap Server.'
@@ -1986,7 +1984,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.100.2.1.2.1.6.{#SNMPINDEX}'
               key: 'snmpTrapVersion[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'This parameter specifies the SNMP trap version.'
@@ -2003,6 +2001,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#ETHCURRENTIPV4ADDR},.1.3.6.1.4.1.10297.201.1.1.1.1.1.7,{#ETHMACADDR},.1.3.6.1.4.1.10297.201.1.1.1.1.1.6,{#ETHDEFAULTGW},.1.3.6.1.4.1.10297.201.1.1.1.1.1.5,{#ETHSUBMASK},.1.3.6.1.4.1.10297.201.1.1.1.1.1.4]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.ethInforEntry
           delay: 1d
+          status: DISABLED
           description: 'The entry of ethernet setting.'
           item_prototypes:
             -
@@ -2011,7 +2010,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.1.1.1.7.{#SNMPINDEX}'
               key: 'ethCurrentIpv4Addr[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2026,7 +2025,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.1.1.1.5.{#SNMPINDEX}'
               key: 'ethDefaultGW[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2041,7 +2040,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.1.1.1.3.{#SNMPINDEX}'
               key: 'ethIpAddr[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2056,7 +2055,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.1.1.1.6.{#SNMPINDEX}'
               key: 'ethMacAddr[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2071,7 +2070,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.1.1.1.4.{#SNMPINDEX}'
               key: 'ethSubMask[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2086,7 +2085,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.1.1.1.2.{#SNMPINDEX}'
               key: 'ethType[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The ethernet port can set IP address by manual and auto. If user can not get IP address from DHCP or BOOTP, the device will generate auto IP address on the ethernet port.'
@@ -2103,6 +2102,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#FWRULEDESIP},.1.3.6.1.4.1.10297.201.1.2.3.5.1.6,{#FWRULESRCIP},.1.3.6.1.4.1.10297.201.1.2.3.5.1.4,{#FWRULESRC},.1.3.6.1.4.1.10297.201.1.2.3.5.1.3,{#FWRULEMETHOD},.1.3.6.1.4.1.10297.201.1.2.3.5.1.2]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.fwRuleEntry
           delay: 1d
+          status: DISABLED
           description: 'Firewall Rule entry'
           item_prototypes:
             -
@@ -2111,7 +2111,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.2.3.5.1.6.{#SNMPINDEX}'
               key: 'fwRuleDesIP[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2126,7 +2126,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.2.3.5.1.2.{#SNMPINDEX}'
               key: 'fwRuleMethod[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Firewall Rule method'
@@ -2142,7 +2142,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.2.3.5.1.4.{#SNMPINDEX}'
               key: 'fwRuleSrcIP[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2157,7 +2157,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.2.3.5.1.3.{#SNMPINDEX}'
               key: 'fwRuleSrc[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Firewall Rule Source IP'
@@ -2174,6 +2174,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#GPRSPHONENUM},.1.3.6.1.4.1.10297.201.1.1.2.3.1.8,{#GPRSAPN},.1.3.6.1.4.1.10297.201.1.1.2.3.1.7,{#GPRSPINNUM},.1.3.6.1.4.1.10297.201.1.1.2.3.1.6,{#GPRSUSERNAME},.1.3.6.1.4.1.10297.201.1.1.2.3.1.4,{#GPRSSIM},.1.3.6.1.4.1.10297.201.1.1.2.3.1.2]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.gprsEntry
           delay: 1d
+          status: DISABLED
           description: 'The entry of GPRS setting.'
           item_prototypes:
             -
@@ -2182,7 +2183,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.2.3.1.7.{#SNMPINDEX}'
               key: 'gprsAPN[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2197,7 +2198,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.2.3.1.3.{#SNMPINDEX}'
               key: 'gprsAuthType[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The setting of authoisation type.'
@@ -2213,7 +2214,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.2.3.1.8.{#SNMPINDEX}'
               key: 'gprsPhoneNum[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2228,7 +2229,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.2.3.1.6.{#SNMPINDEX}'
               key: 'gprsPinNum[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2243,7 +2244,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.2.3.1.2.{#SNMPINDEX}'
               key: 'gprsSim[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Enable or disable the sim card to connection.'
@@ -2259,7 +2260,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.1.2.3.1.4.{#SNMPINDEX}'
               key: 'gprsUserName[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2275,6 +2276,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#PEERPORT},.1.3.6.1.4.1.10297.201.2.4.2.7.1.5,{#PEERIPADDR},.1.3.6.1.4.1.10297.201.2.4.2.7.1.4,{#PEERLOCALPORT},.1.3.6.1.4.1.10297.201.2.4.2.7.1.3]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.peerInfoEntry
           delay: 1d
+          status: DISABLED
           description: 'Entry for Peer Information in USDG Data Mode'
           item_prototypes:
             -
@@ -2283,7 +2285,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.7.1.4.{#SNMPINDEX}'
               key: 'peerIpAddr[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2298,7 +2300,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.7.1.3.{#SNMPINDEX}'
               key: 'peerlocalPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'local port for Peer Infomation'
@@ -2312,7 +2314,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.7.1.5.{#SNMPINDEX}'
               key: 'peerPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Target peer port for Peer Infomation'
@@ -2335,7 +2337,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.1.1.1.2.{#SNMPINDEX}'
               key: 'operMod[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Port operation Mode setting !After Setting it will reboot to take effect!!'
@@ -2352,6 +2354,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#RFC2217HOSTIDLETIME},.1.3.6.1.4.1.10297.201.2.4.2.5.1.3,{#RFC2217LISTENPORT},.1.3.6.1.4.1.10297.201.2.4.2.5.1.2]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.rfc2217Entry
           delay: 1d
+          status: DISABLED
           description: 'rfc2217 entry'
           item_prototypes:
             -
@@ -2360,7 +2363,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.5.1.3.{#SNMPINDEX}'
               key: 'rfc2217HostIdleTime[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Host Idle Timeout(s)'
@@ -2374,7 +2377,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.5.1.2.{#SNMPINDEX}'
               key: 'rfc2217ListenPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'List Port'
@@ -2389,6 +2392,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#RVCOMIPADDR},.1.3.6.1.4.1.10297.201.2.4.2.2.1.2]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.rvcomEntry
           delay: 1d
+          status: DISABLED
           description: 'The entry of RVCOM table.'
           item_prototypes:
             -
@@ -2397,7 +2401,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.2.1.2.{#SNMPINDEX}'
               key: 'rvcomIPaddr[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2413,6 +2417,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#SMSCELLULARPHONE},.1.3.6.1.4.1.10297.201.3.3.1.8.1.1]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.smsAlertEntry
           delay: 1d
+          status: DISABLED
           description: 'Entry for SMS alert cellular phone'
           item_prototypes:
             -
@@ -2421,7 +2426,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.3.3.1.8.1.1.{#SNMPINDEX}'
               key: 'smsCellularPhone[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2437,6 +2442,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#TOMAILADDR},.1.3.6.1.4.1.10297.201.3.3.1.6.1.2]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.toMailAddrEntry
           delay: 1d
+          status: DISABLED
           description: 'Entry for SNMP Notification Email Addr'
           item_prototypes:
             -
@@ -2445,7 +2451,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.3.3.1.6.1.2.{#SNMPINDEX}'
               key: 'toMailAddr[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2469,7 +2475,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.3.3.2.8.1.1.{#SNMPINDEX}'
               key: 'dcdPortChange[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2486,7 +2492,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.3.3.2.8.1.2.{#SNMPINDEX}'
               key: 'dsrPortChange[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -2504,6 +2510,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#PORTRXSTRING},.1.3.6.1.4.1.10297.201.2.5.1.1.9,{#PORTTXSTRING},.1.3.6.1.4.1.10297.201.2.5.1.1.8,{#PORTTOTALRXCNT},.1.3.6.1.4.1.10297.201.2.5.1.1.7,{#PORTTOTALTXCNT},.1.3.6.1.4.1.10297.201.2.5.1.1.6,{#PORTMODE},.1.3.6.1.4.1.10297.201.2.5.1.1.2]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.uartmonitorEntry
           delay: 1d
+          status: DISABLED
           description: 'Monitor Status entry'
           item_prototypes:
             -
@@ -2512,8 +2519,9 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.2.{#SNMPINDEX}'
               key: 'portMode[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
+              status: DISABLED
               value_type: FLOAT
               description: 'Port operation Mode Show'
               valuemap:
@@ -2528,8 +2536,9 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.5.{#SNMPINDEX}'
               key: 'portRxCnt[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
+              status: DISABLED
               value_type: FLOAT
               description: 'port RX Count'
               tags:
@@ -2542,9 +2551,10 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.9.{#SNMPINDEX}'
               key: 'portRxString[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
               trends: '0'
+              status: DISABLED
               value_type: TEXT
               description: 'The last 256 byte input data to the uart port.'
               tags:
@@ -2557,7 +2567,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.3.{#SNMPINDEX}'
               key: 'portStatus[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
               value_type: FLOAT
               description: 'port Status'
@@ -2573,8 +2583,9 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.7.{#SNMPINDEX}'
               key: 'portTotalRxCnt[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
+              status: DISABLED
               value_type: FLOAT
               description: 'port Total RX'
               tags:
@@ -2587,8 +2598,9 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.6.{#SNMPINDEX}'
               key: 'portTotalTxCnt[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
+              status: DISABLED
               value_type: FLOAT
               description: 'port Total TX'
               tags:
@@ -2601,8 +2613,9 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.4.{#SNMPINDEX}'
               key: 'portTxCnt[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
+              status: DISABLED
               value_type: FLOAT
               description: 'port TX Count'
               tags:
@@ -2615,9 +2628,10 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.1.1.8.{#SNMPINDEX}'
               key: 'portTxString[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 5m
               history: 30d
               trends: '0'
+              status: DISABLED
               value_type: TEXT
               description: 'The last 256 byte output data from the uart port.'
               tags:
@@ -2631,6 +2645,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#UARTDTRSTATUS},.1.3.6.1.4.1.10297.201.2.3.1.1.13,{#UARTRTSSTATUS},.1.3.6.1.4.1.10297.201.2.3.1.1.12,{#UARTPORTFIFOSIZE},.1.3.6.1.4.1.10297.201.2.3.1.1.11,{#UARTPORTFCH},.1.3.6.1.4.1.10297.201.2.3.1.1.10]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.uartportAdvanEntry
           delay: 1d
+          status: DISABLED
           description: 'Entry for Port Advance Setting'
           item_prototypes:
             -
@@ -2639,7 +2654,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.1.{#SNMPINDEX}'
               key: 'uartDelayTime[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Delay Time(ms)'
@@ -2653,7 +2668,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.4.{#SNMPINDEX}'
               key: 'uartDisableMultiCon[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Disable Multiple Connection'
@@ -2669,7 +2684,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.3.{#SNMPINDEX}'
               key: 'uartDisableTimeout[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Disable TimeOut Detection'
@@ -2685,7 +2700,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.13.{#SNMPINDEX}'
               key: 'uartDtrStatus[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'DTS Status'
@@ -2701,7 +2716,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.5.{#SNMPINDEX}'
               key: 'uartEnableBufDataSize[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Enable Buffer Data Size'
@@ -2715,7 +2730,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.2.{#SNMPINDEX}'
               key: 'uartIgnorePurge[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Ignore Purge'
@@ -2731,7 +2746,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.10.{#SNMPINDEX}'
               key: 'uartPortFCH[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: PortFCH
@@ -2745,7 +2760,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.9.{#SNMPINDEX}'
               key: 'uartPortFCL[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: PortFCL
@@ -2759,7 +2774,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.11.{#SNMPINDEX}'
               key: 'uartPortFIFOSize[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: PortFIFOSize
@@ -2773,7 +2788,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.7.{#SNMPINDEX}'
               key: 'uartPortRTL[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: PortRTL
@@ -2787,7 +2802,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.6.{#SNMPINDEX}'
               key: 'uartPortTimeout[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Port Time Out(ms)'
@@ -2801,7 +2816,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.8.{#SNMPINDEX}'
               key: 'uartPortTTL[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: PortTTL
@@ -2815,7 +2830,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.3.1.1.12.{#SNMPINDEX}'
               key: 'uartRtsStatus[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'RTS Status'
@@ -2832,6 +2847,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#UARTASYNCPORTSTOPBITS},.1.3.6.1.4.1.10297.201.2.2.1.1.7,{#UARTASYNCPORTBITS},.1.3.6.1.4.1.10297.201.2.2.1.1.6,{#UARTASYNCPORTPARITY},.1.3.6.1.4.1.10297.201.2.2.1.1.5,{#UARTPORTFLOWTYPE},.1.3.6.1.4.1.10297.201.2.2.1.1.4]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.uartPortEntry
           delay: 1d
+          status: DISABLED
           description: 'A list of port entries. The number of entries is given by the value of uartNumber.'
           item_prototypes:
             -
@@ -2840,7 +2856,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.2.1.1.6.{#SNMPINDEX}'
               key: 'uartAsyncPortBits[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port''s number of bits in a character.'
@@ -2854,7 +2870,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.2.1.1.5.{#SNMPINDEX}'
               key: 'uartAsyncPortParity[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port''s sense of a character parity bit.'
@@ -2870,7 +2886,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.2.1.1.7.{#SNMPINDEX}'
               key: 'uartAsyncPortStopBits[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port''s number of stop bits.'
@@ -2886,7 +2902,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.2.1.1.4.{#SNMPINDEX}'
               key: 'uartPortFlowType[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port''s type of input/output flow control. ''none'' indicates no flow control at this level. ''ctsRts'' and ''dsrDtr'' indicate use of the indicated hardware signals.'
@@ -2902,7 +2918,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.2.1.1.3.{#SNMPINDEX}'
               key: 'uartPortSpeed[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port''s input/output speed in bits per second. Note that non-standard values, such as 9612, are probably not allowed on most implementations.'
@@ -2916,7 +2932,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.2.1.1.2.{#SNMPINDEX}'
               key: 'uartPortType[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port''s hardware type.'
@@ -2941,7 +2957,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.2.1.2.{#SNMPINDEX}'
               key: 'uartSigName[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Identification of a hardware signal, as follows: rts Request to Send cts Clear to Send dsr Data Set Ready dtr Data Terminal Ready dcd Received Line Signal Detecto'
@@ -2957,7 +2973,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.5.2.1.3.{#SNMPINDEX}'
               key: 'uartSigState[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The current signal state.'
@@ -2974,6 +2990,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#USDGCTRLGUARDTIME},.1.3.6.1.4.1.10297.201.2.4.2.3.1.7,{#USDGCTRLHANGUPCHAR},.1.3.6.1.4.1.10297.201.2.4.2.3.1.6,{#USDGCTRLCOMLISTPORT},.1.3.6.1.4.1.10297.201.2.4.2.3.1.5,{#USDGCTRLDATALISTPORT},.1.3.6.1.4.1.10297.201.2.4.2.3.1.4]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.usdgCtrlEntry
           delay: 1d
+          status: DISABLED
           description: 'USDG Control Mode entry'
           item_prototypes:
             -
@@ -2982,7 +2999,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.3.1.5.{#SNMPINDEX}'
               key: 'usdgCtrlComListPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Control Mode Command Listen Port'
@@ -2996,7 +3013,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.3.1.3.{#SNMPINDEX}'
               key: 'usdgCtrlDataIdleTimeout[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Control Mode Data Idle Timeout(s)'
@@ -3010,7 +3027,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.3.1.4.{#SNMPINDEX}'
               key: 'usdgCtrlDataListPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Control Mode Data Listen Port'
@@ -3024,7 +3041,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.3.1.7.{#SNMPINDEX}'
               key: 'usdgCtrlGuardTime[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Control Mode Guard Time(ms)'
@@ -3038,7 +3055,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.3.1.6.{#SNMPINDEX}'
               key: 'usdgCtrlHangUpChar[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -3053,7 +3070,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.3.1.2.{#SNMPINDEX}'
               key: 'usdgCtrlProtocol[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Control Mode Protocol'
@@ -3070,6 +3087,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#USDGDATASENDVIAETH},.1.3.6.1.4.1.10297.201.2.4.2.4.1.14,{#USDGDATAPACKBYCHARTIMEOUT},.1.3.6.1.4.1.10297.201.2.4.2.4.1.13,{#USDGDATAPACKBYENDCHAR},.1.3.6.1.4.1.10297.201.2.4.2.4.1.12,{#USDGDATAKEYFORMAT},.1.3.6.1.4.1.10297.201.2.4.2.4.1.11]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.usdgDataEntry
           delay: 1d
+          status: DISABLED
           description: 'USDG Data Mode entry'
           item_prototypes:
             -
@@ -3078,7 +3096,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.8.{#SNMPINDEX}'
               key: 'usdgDataAutoConPeer[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Set Auto Connect to Peer IP'
@@ -3094,7 +3112,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.5.{#SNMPINDEX}'
               key: 'usdgDataComListPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Common Listen Port'
@@ -3108,7 +3126,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.7.{#SNMPINDEX}'
               key: 'usdgDataFrameBreak[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Frame Break'
@@ -3122,7 +3140,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.3.{#SNMPINDEX}'
               key: 'usdgDataIdleTimeout[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Data Idle Timeout'
@@ -3136,7 +3154,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.11.{#SNMPINDEX}'
               key: 'usdgDataKeyFormat[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Key Format'
@@ -3152,7 +3170,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.4.{#SNMPINDEX}'
               key: 'usdgDataListPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Data Listen Port'
@@ -3166,7 +3184,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.13.{#SNMPINDEX}'
               key: 'usdgDataPackByCharTimeout[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Pack by character timeout(4 Bytes)'
@@ -3182,7 +3200,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.12.{#SNMPINDEX}'
               key: 'usdgDataPackByEndChar[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -3197,7 +3215,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.10.{#SNMPINDEX}'
               key: 'usdgDataPackByItv[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Pack by interval(1 ~ 60000 ms)'
@@ -3211,7 +3229,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.9.{#SNMPINDEX}'
               key: 'usdgDataPackBySize[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Pack By Size(1 ~ 1024 Bytes)'
@@ -3225,7 +3243,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.2.{#SNMPINDEX}'
               key: 'usdgDataProtocol[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Protocol'
@@ -3241,7 +3259,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.6.{#SNMPINDEX}'
               key: 'usdgDataResTimeout[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Response Time'
@@ -3255,7 +3273,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.4.1.14.{#SNMPINDEX}'
               key: 'usdgDataSendViaEth[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'USDG Data Mode Peer for Receiving Data Number'
@@ -3272,6 +3290,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#RVCOMNUMBER},.1.3.6.1.4.1.10297.201.2.4.2.1.1.12,{#VCOMDATABUFFERMAX},.1.3.6.1.4.1.10297.201.2.4.2.1.1.11,{#VCOMDATABUFFERFULL},.1.3.6.1.4.1.10297.201.2.4.2.1.1.10,{#VCOMDATABUFFERMEDIA},.1.3.6.1.4.1.10297.201.2.4.2.1.1.9]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.vcomEntry
           delay: 1d
+          status: DISABLED
           description: 'vcom entry'
           item_prototypes:
             -
@@ -3280,7 +3299,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.12.{#SNMPINDEX}'
               key: 'rvcomNumber[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The number of RVCOM.'
@@ -3294,7 +3313,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.10.{#SNMPINDEX}'
               key: 'vcomDataBufferFull[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'When buffer is full, the following actions.'
@@ -3310,7 +3329,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.11.{#SNMPINDEX}'
               key: 'vcomDataBufferMax[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Unit is MB'
@@ -3324,7 +3343,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.9.{#SNMPINDEX}'
               key: 'vcomDataBufferMedia[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'choose the media of data buffering'
@@ -3340,7 +3359,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.4.{#SNMPINDEX}'
               key: 'vcomFrameBreak[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Frame Break in VCOM mode(ms)'
@@ -3354,7 +3373,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.2.{#SNMPINDEX}'
               key: 'vcomHostIdleTime[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Host Idle Time in VCOM mode(s)'
@@ -3368,7 +3387,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.7.{#SNMPINDEX}'
               key: 'vcomKeyFormat[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'KeyFormat in VCOM Mode'
@@ -3384,7 +3403,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.8.{#SNMPINDEX}'
               key: 'vcomPackByEndChar[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -3399,7 +3418,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.6.{#SNMPINDEX}'
               key: 'vcomPackByItv[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Pack by interval (1 ~ 60000 ms)'
@@ -3413,7 +3432,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.5.{#SNMPINDEX}'
               key: 'vcomPackBySiz[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Pack by Size (1 ~ 1024 Bytes)'
@@ -3427,7 +3446,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.2.4.2.1.1.3.{#SNMPINDEX}'
               key: 'vcomResponseTime[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'Response Time in VCOM mode(ms)'
@@ -3442,6 +3461,7 @@ zabbix_export:
           snmp_oid: 'discovery[{#VSULDESPORT},.1.3.6.1.4.1.10297.201.1.2.3.3.1.4,{#VSULIPADDR},.1.3.6.1.4.1.10297.201.1.2.3.3.1.3,{#VSULLOCALPORT},.1.3.6.1.4.1.10297.201.1.2.3.3.1.2]'
           key: ADVANTECH-EKI-DEVICESERVER-MIB.vsulSrvEntry
           delay: 1d
+          status: DISABLED
           description: 'The entry of virtual server.'
           item_prototypes:
             -
@@ -3450,7 +3470,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.2.3.3.1.4.{#SNMPINDEX}'
               key: 'vsulDesPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port number provided by the service on inside server.'
@@ -3464,7 +3484,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.2.3.3.1.3.{#SNMPINDEX}'
               key: 'vsulIPAddr[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               value_type: TEXT
@@ -3479,7 +3499,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.10297.201.1.2.3.3.1.2.{#SNMPINDEX}'
               key: 'vsulLocalPort[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               value_type: FLOAT
               description: 'The port number at device for outside client connection. If the client connection this port, device will transfer the data to the vsDesPort on the vsIPaddr.'
