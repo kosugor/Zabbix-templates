@@ -26,7 +26,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.44.0
           key: MOXA-IEX-402-MIB.ageTime
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Web Timeout'
@@ -40,7 +40,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.35.1.0
           key: MOXA-IEX-402-MIB.backupMediaAutoLoad
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Enable Abc-01 backupMedia configuration PowerOn Auto Load functions'
@@ -56,7 +56,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.31.4.0
           key: MOXA-IEX-402-MIB.confPathName
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -71,7 +71,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.53.0
           key: MOXA-IEX-402-MIB.cpuLoading5s
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'CPU Loading for the past 5 seconds in %.'
@@ -85,7 +85,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.54.0
           key: MOXA-IEX-402-MIB.cpuLoading30s
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'CPU Loading for the past 30 seconds in %.'
@@ -99,7 +99,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.55.0
           key: MOXA-IEX-402-MIB.cpuLoading300s
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'CPU Loading for the past 5 minutes in %.'
@@ -113,7 +113,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.3.0
           key: MOXA-IEX-402-MIB.defaultGateway
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -128,7 +128,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.5.0
           key: MOXA-IEX-402-MIB.dnsServer1IpAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -143,7 +143,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.8.0
           key: MOXA-IEX-402-MIB.dnsServer2IpAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -158,7 +158,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.2.6.0
           key: MOXA-IEX-402-MIB.emailWarningEventAuthFail
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The authentication fail event of email warning function.'
@@ -174,7 +174,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.2.3.0
           key: MOXA-IEX-402-MIB.emailWarningEventConfigChange
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The configuration changed event of email warning function.'
@@ -190,7 +190,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.2.5.0
           key: MOXA-IEX-402-MIB.emailWarningEventPowerOff2On
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The power off event of email warning function.'
@@ -206,7 +206,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.2.4.0
           key: MOXA-IEX-402-MIB.emailWarningEventPowerOn2Off
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The power on event of email warning function.'
@@ -222,7 +222,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.2.1.0
           key: MOXA-IEX-402-MIB.emailWarningEventServerColdStart
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The switch cold start event of email warning function.'
@@ -238,7 +238,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.2.2.0
           key: MOXA-IEX-402-MIB.emailWarningEventServerWarmStart
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The switch warm start event of email warning function.'
@@ -254,7 +254,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.1.2.0
           key: MOXA-IEX-402-MIB.emailWarningFirstEmailAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -269,7 +269,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.1.5.0
           key: MOXA-IEX-402-MIB.emailWarningFourthEmailAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -284,7 +284,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.1.1.0
           key: MOXA-IEX-402-MIB.emailWarningMailServer
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -299,7 +299,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.1.3.0
           key: MOXA-IEX-402-MIB.emailWarningSecondEmailAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -314,7 +314,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.1.6.0
           key: MOXA-IEX-402-MIB.emailWarningSMTPPort
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The email server''s SMTP port of email warning function.'
@@ -328,7 +328,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.11.1.4.0
           key: MOXA-IEX-402-MIB.emailWarningThirdEmailAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -343,7 +343,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.30.1.0
           key: MOXA-IEX-402-MIB.enableAccessibleIP
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Enable the accessible IP address list.'
@@ -359,7 +359,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.4.0
           key: MOXA-IEX-402-MIB.enableAutoIpConfig
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'This enable the automatic IP address configuration function.'
@@ -375,7 +375,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.36.0
           key: MOXA-IEX-402-MIB.enableColdStart
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Enable to restart MOXA ethernet switch.'
@@ -391,7 +391,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.48.0
           key: MOXA-IEX-402-MIB.enableFactoryDefault
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Reset all EtherDevice switch settings to factory default values'
@@ -407,7 +407,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.42.1.1.0
           key: MOXA-IEX-402-MIB.enableLLDP
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'This enable the LLDP functon.'
@@ -423,7 +423,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.6.0
           key: MOXA-IEX-402-MIB.enableTelnetConsole
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'This enable telnet console.'
@@ -439,7 +439,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.5.0
           key: MOXA-IEX-402-MIB.enableWebConfig
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'This enable the Web. configuration function.'
@@ -455,7 +455,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.7.0
           key: MOXA-IEX-402-MIB.endDay
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting End Day of Daylight Saving time'
@@ -471,7 +471,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.8.0
           key: MOXA-IEX-402-MIB.endHour
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting End Hour of Daylight Saving time'
@@ -485,7 +485,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.5.0
           key: MOXA-IEX-402-MIB.endMonth
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting End Month of Daylight Saving time'
@@ -501,7 +501,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.6.0
           key: MOXA-IEX-402-MIB.endWeek
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting End Week of Daylight Saving time'
@@ -517,7 +517,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.46.2.0
           key: MOXA-IEX-402-MIB.eventlogClear
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'To clear the eventlog, set value 1 to this field.'
@@ -533,7 +533,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.31.2.0
           key: MOXA-IEX-402-MIB.firmwarePathName
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -548,7 +548,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.4.0
           key: MOXA-IEX-402-MIB.firmwareVersion
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -563,7 +563,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.57.0
           key: MOXA-IEX-402-MIB.freeMemory
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Total size of free dynamic memory'
@@ -577,7 +577,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.42.1.2.0
           key: MOXA-IEX-402-MIB.lldpMSGInterval
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The LLDP message transmit interval.'
@@ -591,7 +591,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.31.3.0
           key: MOXA-IEX-402-MIB.logPathName
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -606,7 +606,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.59.0
           key: MOXA-IEX-402-MIB.memoryUsage
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The usage of memory size in %.'
@@ -620,7 +620,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.1.0
           key: MOXA-IEX-402-MIB.numberOfPorts
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Total Ports.'
@@ -634,7 +634,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.9.0
           key: MOXA-IEX-402-MIB.offsetHours
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting Offset Hours of Daylight Saving time'
@@ -648,7 +648,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.10.1.0
           key: MOXA-IEX-402-MIB.power1InputStatus
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The status of the first power input.'
@@ -664,7 +664,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.10.2.0
           key: MOXA-IEX-402-MIB.power2InputStatus
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The status of the second power input.'
@@ -680,7 +680,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.60.0
           key: MOXA-IEX-402-MIB.productRevision
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The product revision.'
@@ -694,7 +694,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.13.0
           key: MOXA-IEX-402-MIB.snmpInformEnable
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'This enable the snmpInform function.'
@@ -710,7 +710,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.14.0
           key: MOXA-IEX-402-MIB.snmpInformRetries
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The snmp inform retry times of SNMP trap server'
@@ -724,7 +724,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.15.0
           key: MOXA-IEX-402-MIB.snmpInformTimeout
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The snmp inform interval of SNMP trap server'
@@ -738,7 +738,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.9.0
           key: MOXA-IEX-402-MIB.snmpReadCommunity
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -753,7 +753,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.11.0
           key: MOXA-IEX-402-MIB.snmpTrap2Community
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -768,7 +768,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.6.0
           key: MOXA-IEX-402-MIB.snmpTrapCommunity
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -783,7 +783,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.3.0
           key: MOXA-IEX-402-MIB.startDay
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting Start Day of Daylight Saving time'
@@ -799,7 +799,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.4.0
           key: MOXA-IEX-402-MIB.startHour
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting Start Hour of Daylight Saving time'
@@ -813,7 +813,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.1.0
           key: MOXA-IEX-402-MIB.startMonth
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting Start Month of Daylight Saving time'
@@ -829,7 +829,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.5.2.0
           key: MOXA-IEX-402-MIB.startWeek
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Setting Start Week of Daylight Saving time'
@@ -845,7 +845,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.1.0
           key: MOXA-IEX-402-MIB.switchIpAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -860,7 +860,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.2.0
           key: MOXA-IEX-402-MIB.switchIpMask
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -875,7 +875,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.2.0
           key: MOXA-IEX-402-MIB.switchModel
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -890,7 +890,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.1.0
           key: MOXA-IEX-402-MIB.sysDateTime
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -905,7 +905,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.37.1.0
           key: MOXA-IEX-402-MIB.syslogServer1
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -920,7 +920,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.37.2.0
           key: MOXA-IEX-402-MIB.syslogServer1port
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The syslog server 1 port'
@@ -934,7 +934,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.37.3.0
           key: MOXA-IEX-402-MIB.syslogServer2
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -949,7 +949,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.37.4.0
           key: MOXA-IEX-402-MIB.syslogServer2port
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The syslog server 2 port'
@@ -963,7 +963,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.37.5.0
           key: MOXA-IEX-402-MIB.syslogServer3
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -978,7 +978,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.37.6.0
           key: MOXA-IEX-402-MIB.syslogServer3port
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The syslog server 3 port'
@@ -992,7 +992,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.31.1.0
           key: MOXA-IEX-402-MIB.tftpServer
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1007,7 +1007,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.3.0
           key: MOXA-IEX-402-MIB.timeServer1
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1022,7 +1022,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.32.4.0
           key: MOXA-IEX-402-MIB.timeServer2
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1037,7 +1037,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.56.0
           key: MOXA-IEX-402-MIB.totalMemory
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Total size of System RAM.'
@@ -1051,7 +1051,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.12.0
           key: MOXA-IEX-402-MIB.trap2ServerAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1066,7 +1066,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.8.7.0
           key: MOXA-IEX-402-MIB.trapServerAddr
-          delay: '60'
+          delay: 1d
           history: 30d
           trends: '0'
           value_type: TEXT
@@ -1081,7 +1081,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.58.0
           key: MOXA-IEX-402-MIB.usedMemory
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Total size of used dynamic memory'
@@ -1095,7 +1095,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.2.1.0
           key: MOXA-IEX-402-MIB.varconfigChangeTrap
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The configuration has been changed.'
@@ -1111,7 +1111,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.2.2.0
           key: MOXA-IEX-402-MIB.varpower1Trap
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The power on/off changed.'
@@ -1127,7 +1127,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.2.3.0
           key: MOXA-IEX-402-MIB.varpower2Trap
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'The power on/off changed.'
@@ -1143,7 +1143,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.4.1.8691.5.1.1.43.0
           key: MOXA-IEX-402-MIB.webTimeout
-          delay: '60'
+          delay: 1d
           history: 30d
           value_type: FLOAT
           description: 'Web Timeout'
@@ -1224,7 +1224,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: 'discovery]'
           key: MOXA-IEX-402-MIB.accessibleIpEntry
-          delay: '3600'
+          delay: 1d
           description: 'Accessible IP address entry.'
         -
           uuid: fd21169ec1104aa6a9b5689962472e9a
@@ -1232,7 +1232,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: 'discovery[{#DSLPORTNAME},.1.3.6.1.4.1.8691.5.1.1.9.2.1.8,{#DSLPORTANNEX},.1.3.6.1.4.1.8691.5.1.1.9.2.1.7,{#DSLPORTRATEDOWN},.1.3.6.1.4.1.8691.5.1.1.9.2.1.6,{#DSLPORTRATEUP},.1.3.6.1.4.1.8691.5.1.1.9.2.1.5,{#DSLPORTTURBO},.1.3.6.1.4.1.8691.5.1.1.9.2.1.4]'
           key: MOXA-IEX-402-MIB.dslPortEntry
-          delay: '3600'
+          delay: 1d
           description: 'The port entry.'
           item_prototypes:
             -
@@ -1241,7 +1241,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.7.{#SNMPINDEX}'
               key: 'dslportAnnex[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1258,7 +1258,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.2.{#SNMPINDEX}'
               key: 'dslportDesc[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1274,7 +1274,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.1.{#SNMPINDEX}'
               key: 'dslportIndex[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1289,7 +1289,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.3.{#SNMPINDEX}'
               key: 'dslportMode[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1306,7 +1306,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.8.{#SNMPINDEX}'
               key: 'dslportName[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1322,7 +1322,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.6.{#SNMPINDEX}'
               key: 'dslportRateDown[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1337,7 +1337,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.5.{#SNMPINDEX}'
               key: 'dslportRateUp[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1352,7 +1352,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.2.1.4.{#SNMPINDEX}'
               key: 'dslportTurbo[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1369,7 +1369,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: 'discovery[{#EVENTLOGEVENT},.1.3.6.1.4.1.8691.5.1.1.46.1.1.6,{#EVENTLOGUPTIME},.1.3.6.1.4.1.8691.5.1.1.46.1.1.5,{#EVENTLOGTIME},.1.3.6.1.4.1.8691.5.1.1.46.1.1.4,{#EVENTLOGDATE},.1.3.6.1.4.1.8691.5.1.1.46.1.1.3]'
           key: MOXA-IEX-402-MIB.eventlogEntry
-          delay: '3600'
+          delay: 1d
           description: 'The table entry of eventlog.'
           item_prototypes:
             -
@@ -1378,7 +1378,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.46.1.1.2.{#SNMPINDEX}'
               key: 'eventlogBootup[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1393,7 +1393,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.46.1.1.3.{#SNMPINDEX}'
               key: 'eventlogDate[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1409,7 +1409,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.46.1.1.6.{#SNMPINDEX}'
               key: 'eventlogEvent[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1425,7 +1425,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.46.1.1.1.{#SNMPINDEX}'
               key: 'eventlogIndex[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1440,7 +1440,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.46.1.1.4.{#SNMPINDEX}'
               key: 'eventlogTime[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1456,7 +1456,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.46.1.1.5.{#SNMPINDEX}'
               key: 'eventlogUptime[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1472,7 +1472,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: 'discovery[{#MONITORDSLLED5},.1.3.6.1.4.1.8691.5.1.1.10.5.1.11,{#MONITORDSLLED4},.1.3.6.1.4.1.8691.5.1.1.10.5.1.10,{#MONITORDSLLED3},.1.3.6.1.4.1.8691.5.1.1.10.5.1.9,{#MONITORDSLLED2},.1.3.6.1.4.1.8691.5.1.1.10.5.1.8]'
           key: MOXA-IEX-402-MIB.monitorDslPortEntry
-          delay: '3600'
+          delay: 1d
           description: 'The port table entry of monitor function.'
           item_prototypes:
             -
@@ -1481,7 +1481,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.2.{#SNMPINDEX}'
               key: 'dslmonitorLinkStatus[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1498,7 +1498,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.6.{#SNMPINDEX}'
               key: 'monitorCurrentMode[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1515,7 +1515,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.4.{#SNMPINDEX}'
               key: 'monitorDownStreamRate[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1530,7 +1530,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.7.{#SNMPINDEX}'
               key: 'monitorDslLed1[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1547,7 +1547,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.8.{#SNMPINDEX}'
               key: 'monitorDslLed2[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1564,7 +1564,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.9.{#SNMPINDEX}'
               key: 'monitorDslLed3[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1581,7 +1581,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.10.{#SNMPINDEX}'
               key: 'monitorDslLed4[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1598,7 +1598,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.11.{#SNMPINDEX}'
               key: 'monitorDslLed5[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1615,7 +1615,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.5.{#SNMPINDEX}'
               key: 'monitorSNR[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1630,7 +1630,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.5.1.3.{#SNMPINDEX}'
               key: 'monitorUpStreamRate[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1645,7 +1645,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: 'discovery[{#MONITORRXTRAFFIC},.1.3.6.1.4.1.8691.5.1.1.10.3.1.8,{#MONITORTXTRAFFIC},.1.3.6.1.4.1.8691.5.1.1.10.3.1.7,{#MONITORFDXFLOWCTRL},.1.3.6.1.4.1.8691.5.1.1.10.3.1.6,{#MONITORTRAFFIC},.1.3.6.1.4.1.8691.5.1.1.10.3.1.5]'
           key: MOXA-IEX-402-MIB.monitorPortEntry
-          delay: '3600'
+          delay: 1d
           description: 'The port table entry of monitor function.'
           item_prototypes:
             -
@@ -1654,7 +1654,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.3.1.4.{#SNMPINDEX}'
               key: 'monitorAutoMDI[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1671,7 +1671,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.3.1.6.{#SNMPINDEX}'
               key: 'monitorFDXFlowCtrl[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1688,7 +1688,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.3.1.2.{#SNMPINDEX}'
               key: 'monitorLinkStatus[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1705,7 +1705,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.3.1.8.{#SNMPINDEX}'
               key: 'monitorRxTraffic[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1720,7 +1720,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.3.1.3.{#SNMPINDEX}'
               key: 'monitorSpeed[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1737,7 +1737,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.3.1.5.{#SNMPINDEX}'
               key: 'monitorTraffic[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1752,7 +1752,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.10.3.1.7.{#SNMPINDEX}'
               key: 'monitorTxTraffic[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1767,7 +1767,7 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: 'discovery[{#PORTNAME},.1.3.6.1.4.1.8691.5.1.1.9.1.1.7,{#PORTFDXFLOWCTRL},.1.3.6.1.4.1.8691.5.1.1.9.1.1.6,{#PORTMDI},.1.3.6.1.4.1.8691.5.1.1.9.1.1.5,{#PORTSPEED},.1.3.6.1.4.1.8691.5.1.1.9.1.1.4,{#PORTDESC},.1.3.6.1.4.1.8691.5.1.1.9.1.1.2]'
           key: MOXA-IEX-402-MIB.portEntry
-          delay: '3600'
+          delay: 1d
           description: 'The port entry.'
           item_prototypes:
             -
@@ -1776,7 +1776,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.1.1.2.{#SNMPINDEX}'
               key: 'portDesc[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1792,7 +1792,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.1.1.6.{#SNMPINDEX}'
               key: 'portFDXFlowCtrl[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1809,7 +1809,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.1.1.1.{#SNMPINDEX}'
               key: 'portIndex[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1824,7 +1824,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.1.1.5.{#SNMPINDEX}'
               key: 'portMDI[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
@@ -1841,7 +1841,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.1.1.7.{#SNMPINDEX}'
               key: 'portName[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               trends: '0'
               status: DISABLED
@@ -1857,7 +1857,7 @@ zabbix_export:
               type: SNMP_AGENT
               snmp_oid: '.1.3.6.1.4.1.8691.5.1.1.9.1.1.4.{#SNMPINDEX}'
               key: 'portSpeed[{#SNMPINDEX}]'
-              delay: '60'
+              delay: 1d
               history: 30d
               status: DISABLED
               value_type: FLOAT
