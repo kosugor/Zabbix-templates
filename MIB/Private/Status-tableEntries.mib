@@ -8,6 +8,10 @@ SERVERVIEW-STATUS-MIB DEFINITIONS ::= BEGIN
 -- MIB Revision: 5.10.00.00
 --
 
+-- Edited by Goran Kosutic to change table entries names (appended Entry suffix) 
+-- https://github.com/kosugor/Zabbix-templates
+
+
 IMPORTS
 	OBJECT-TYPE                            FROM RFC-1212
 	mib-2                                  FROM RFC1213-MIB
@@ -219,14 +223,14 @@ sieStSystemIdentify OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sieStSubsystemTable OBJECT-TYPE
-	SYNTAX	SEQUENCE OF SieStSubsystems
+	SYNTAX	SEQUENCE OF SieStSubsystemEntry
 	ACCESS		not-accessible
 	STATUS		mandatory
 	DESCRIPTION "Table containing the monitored subsystems"
 	::= { sieStSubsystemStatus 1 }
 
-sieStSubsystems OBJECT-TYPE
-	SYNTAX	SieStSubsystems
+sieStSubsystemEntry OBJECT-TYPE
+	SYNTAX	SieStSubsystemEntry
 	ACCESS	not-accessible
 	STATUS	mandatory
 	DESCRIPTION ""
@@ -234,7 +238,7 @@ sieStSubsystems OBJECT-TYPE
 	::= { sieStSubsystemTable 1 }
 
 
-SieStSubsystems ::= 
+SieStSubsystemEntry ::= 
 	SEQUENCE {
 		sieStSubsystemNumber
 			INTEGER,
@@ -256,7 +260,7 @@ sieStSubsystemNumber OBJECT-TYPE
 	ACCESS		read-only
 	STATUS		mandatory
 	DESCRIPTION	"Subsystem number (index, 1..n)"
-	::= { sieStSubsystems 1 }
+	::= { sieStSubsystemEntry 1 }
 
 sieStSubsystemName 	OBJECT-TYPE
 	SYNTAX		DisplayString
@@ -265,7 +269,7 @@ sieStSubsystemName 	OBJECT-TYPE
 	DESCRIPTION	"Subsystem name. This name identifies the subsystem and will never 
 				 be changed if once defined. This name is a string like 'Environment', 
 				 'PowerSupply', 'MassStorage' etc."
-	::= { sieStSubsystems 2 }
+	::= { sieStSubsystemEntry 2 }
 
 sieStSubsystemStatusValue OBJECT-TYPE
 	SYNTAX		INTEGER {
@@ -283,7 +287,7 @@ sieStSubsystemStatusValue OBJECT-TYPE
 				 error(3):    severe problem, system may no longer work properly
 				 failed(4):   this value is obsolete - will no longer appear
 				 unknown(5):  none of the components had a valid status (initialization, no components)"
-	::= { sieStSubsystems 3 }
+	::= { sieStSubsystemEntry 3 }
 
 sieStSubsystemLastErrorMessage OBJECT-TYPE
 	SYNTAX		DisplayString
@@ -292,7 +296,7 @@ sieStSubsystemLastErrorMessage OBJECT-TYPE
 	DESCRIPTION	"Error message text of the component that has failed last. Empty string,
 				 if no error has happened since reboot. This object is not supported by 
 				 all components and can therefore be empty although an error happened."
-	::= { sieStSubsystems 4 }
+	::= { sieStSubsystemEntry 4 }
 
 sieStSubsystemComponents OBJECT-TYPE
 	SYNTAX		DisplayString
@@ -300,14 +304,14 @@ sieStSubsystemComponents OBJECT-TYPE
 	STATUS		mandatory
 	DESCRIPTION	"List if components (short names) included in this subsystem, separated 
 				 by blank spaces; e.g. 'SvPowerSupply OemUpsAPC'"
-	::= { sieStSubsystems 5 }
+	::= { sieStSubsystemEntry 5 }
 
 sieStSubsystemDisplayName OBJECT-TYPE
 	SYNTAX		DisplayString
 	ACCESS		read-only
 	STATUS		mandatory
 	DESCRIPTION	"Subsystem display name string."
-	::= { sieStSubsystems 6 }
+	::= { sieStSubsystemEntry 6 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -346,14 +350,14 @@ sieStNumberSubsystems OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sieStComponentTable OBJECT-TYPE
-	SYNTAX	SEQUENCE OF SieStComponents
+	SYNTAX	SEQUENCE OF SieStComponentEntry
 	ACCESS		not-accessible
 	STATUS		mandatory
 	DESCRIPTION "Table containing the monitored components"
 	::= { sieStComponentStatus 1 }
 
-sieStComponents OBJECT-TYPE
-	SYNTAX	SieStComponents
+sieStComponentEntry OBJECT-TYPE
+	SYNTAX	SieStComponentEntry
 	ACCESS	not-accessible
 	STATUS	mandatory
 	DESCRIPTION ""
@@ -361,7 +365,7 @@ sieStComponents OBJECT-TYPE
 	::= { sieStComponentTable 1 }
 
 
-SieStComponents ::= 
+SieStComponentEntry ::= 
 	SEQUENCE {
 		sieStComponentNumber
 			INTEGER,
@@ -383,7 +387,7 @@ sieStComponentNumber OBJECT-TYPE
 	ACCESS		read-only
 	STATUS		mandatory
 	DESCRIPTION	"Component number (index, 1..n)"
-	::= { sieStComponents 1 }
+	::= { sieStComponentEntry 1 }
 
 sieStComponentName 	OBJECT-TYPE
 	SYNTAX		DisplayString
@@ -392,7 +396,7 @@ sieStComponentName 	OBJECT-TYPE
 	DESCRIPTION	"Component name/tag. This name identifies the component and will never 
 				 be changed if once defined. This name is a string like 'SvEnvironment', 
 				 'SvVoltages', 'OemUpsAPC' etc."
-	::= { sieStComponents 2 }
+	::= { sieStComponentEntry 2 }
 
 sieStComponentStatusValue OBJECT-TYPE
 	SYNTAX		INTEGER {
@@ -414,7 +418,7 @@ sieStComponentStatusValue OBJECT-TYPE
 				 unknown(5):       component had no valid status (initialization, no instances)
  				 notPresent(6):    component is not present (e.g. empty socket)
                  notManageable(7): component is not manageable"
-	::= { sieStComponents 3 }
+	::= { sieStComponentEntry 3 }
 
 sieStComponentLastErrorMessage OBJECT-TYPE
 	SYNTAX		DisplayString
@@ -423,14 +427,14 @@ sieStComponentLastErrorMessage OBJECT-TYPE
 	DESCRIPTION	"Error message text of the current component. Empty string,
 				 if no error has happened since reboot. This object is not supported by 
 				 all components and can therefore be empty although an error happened."
-	::= { sieStComponents 4 }
+	::= { sieStComponentEntry 4 }
 
 sieStComponentDisplayName OBJECT-TYPE
 	SYNTAX		DisplayString
 	ACCESS		read-only
 	STATUS		mandatory
 	DESCRIPTION	"Component display name string."
-	::= { sieStComponents 5 }
+	::= { sieStComponentEntry 5 }
 
 sieStComponentConfirmFailure OBJECT-TYPE
     SYNTAX      INTEGER
@@ -443,7 +447,7 @@ sieStComponentConfirmFailure OBJECT-TYPE
                              >0 - component failure; SET a zero value to confirm
                  SET values: 0  - confirm failure and remove error condition
                              (setting other values than 0 is not possible)"
-	::= { sieStComponents 6 }
+	::= { sieStComponentEntry 6 }
 
 
 -- ----------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 FSC-SERVERCONTROL2-MIB DEFINITIONS ::= BEGIN
 
---#FILENAME        "SC2.MIB"
+--#FILENAME        "SC2-tableEntries.MIB"
 --#DESCRIPTION     "ServerControl MIB, edition 2 - for systemboard and server hardware monitoring"
 --#REVISION        "9.02.02"
 --#VENDOR          "Fujitsu Technology Solutions"
@@ -9,6 +9,10 @@ FSC-SERVERCONTROL2-MIB DEFINITIONS ::= BEGIN
 
 -- Copyright 2019 FUJITSU LIMITED
 -- All rights reserved
+
+-- Edited by Goran Kosutic to change table entries names (appended Entry suffix)
+-- Corrected sc2cpuMCDRAMMode value hybrid from 3 to 4
+-- https://github.com/kosugor/Zabbix-templates
 
 IMPORTS
    OBJECT-TYPE                FROM RFC-1212
@@ -174,14 +178,14 @@ sc2LocalServerUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier number of the local server (usually is ID 1).
-                  This ID can be used as index into the sc2Units table."
+                  This ID can be used as index into the sc2UnitEntry table."
     ::= { sc2UnitInformation 1 }
 
 sc2NumberUnits OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
-    DESCRIPTION  "Number of available units (size of sc2Units table)."
+    DESCRIPTION  "Number of available units (size of sc2UnitEntry table)."
     ::= { sc2UnitInformation 2 }
 
 -- ----------------------------------------------------------------------------------------------
@@ -195,21 +199,21 @@ sc2NumberUnits OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2UnitTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2Units
+    SYNTAX       SEQUENCE OF Sc2UnitEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Description of all units in this MIB"
     ::= { sc2UnitInformation 3 }
 
-sc2Units OBJECT-TYPE
-    SYNTAX       Sc2Units
+sc2UnitEntry OBJECT-TYPE
+    SYNTAX       Sc2UnitEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2uUnitId }
     ::= { sc2UnitTable 1 }
 
-Sc2Units ::= SEQUENCE
+Sc2UnitEntry ::= SEQUENCE
 {
     sc2uUnitId
         INTEGER,
@@ -258,14 +262,14 @@ sc2uUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2Units 1 }
+    ::= { sc2UnitEntry 1 }
 
 sc2UnitClass OBJECT-TYPE
     SYNTAX       UnitClass
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit classification (type)"
-    ::= { sc2Units 2 }
+    ::= { sc2UnitEntry 2 }
 
 sc2UnitCabinetNr OBJECT-TYPE
     SYNTAX       INTEGER
@@ -273,56 +277,56 @@ sc2UnitCabinetNr OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Unit cabinet number (used for addressing storage extension cabinets
                   or server blades). The ID of the local server is usually 0."
-    ::= { sc2Units 3 }
+    ::= { sc2UnitEntry 3 }
 
 sc2UnitDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit designation / housing type (e.g. 'H200R')"
-    ::= { sc2Units 4 }
+    ::= { sc2UnitEntry 4 }
 
 sc2UnitModelName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit model name (e.g. 'PRIMERGY RX100')"
-    ::= { sc2Units 5 }
+    ::= { sc2UnitEntry 5 }
 
 sc2UnitManufacturer OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit manufacturer name (e.g. 'Fujitsu Technology Solutions')"
-    ::= { sc2Units 6 }
+    ::= { sc2UnitEntry 6 }
 
 sc2UnitSerialNumber OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit serial number (e.g. 'YBCL123456')"
-    ::= { sc2Units 7 }
+    ::= { sc2UnitEntry 7 }
 
 sc2UnitLocation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit location string (e.g. 'ServerCenter Room 17, Rack 9')"
-    ::= { sc2Units 8 }
+    ::= { sc2UnitEntry 8 }
 
 sc2UnitContact OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit contact name (e.g. 'Mr. Bond')"
-    ::= { sc2Units 9 }
+    ::= { sc2UnitEntry 9 }
 
 sc2UnitAdminURL OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "URL of administration HTML interface (e.g. 'http://MyServer/admin')"
-    ::= { sc2Units 10 }
+    ::= { sc2UnitEntry 10 }
 
 sc2FrontDoorStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -334,7 +338,7 @@ sc2FrontDoorStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status describing whether the front door is open or closed"
-    ::= { sc2Units 11 }
+    ::= { sc2UnitEntry 11 }
 
 sc2HousingOpenStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -347,7 +351,7 @@ sc2HousingOpenStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status describing whether the housing is open or closed"
-    ::= { sc2Units 12 }
+    ::= { sc2UnitEntry 12 }
 
 sc2MsgLogLanguages OBJECT-TYPE
     SYNTAX       DisplayString
@@ -357,14 +361,14 @@ sc2MsgLogLanguages OBJECT-TYPE
                     decimal language codes, see sc2MessageTextLogTable).
                   e.g. '1031,1033' means German and English are supported.
                   English (1033) is the default language and is always available."
-    ::= { sc2Units 13 }
+    ::= { sc2UnitEntry 13 }
 
 sc2UnitWorldWideName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit World Wide Name. A 64-bit sized address for storage devices (e.g. '6661E2B0A00B88FB')"
-    ::= { sc2Units 14 }
+    ::= { sc2UnitEntry 14 }
 
 sc2RemcsId OBJECT-TYPE
     SYNTAX       DisplayString
@@ -378,21 +382,21 @@ sc2RemcsId OBJECT-TYPE
                      mm...m : 12byte : Device Name
                      CC     :  2byte : Checksum
                      nn...n : 12byte : Serial number"
-    ::= { sc2Units 15 }
+    ::= { sc2UnitEntry 15 }
 
 sc2AssetTag OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Customer specific asset tag (40 bytes)"
-    ::= { sc2Units 16 }
+    ::= { sc2UnitEntry 16 }
 
 sc2MsgLogAvailable OBJECT-TYPE
     SYNTAX       TrueFalse
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Replies whether a message log is available on this unit"
-    ::= { sc2Units 17 }
+    ::= { sc2UnitEntry 17 }
 
 sc2ManagementIpAddress OBJECT-TYPE
     SYNTAX       DisplayString
@@ -401,14 +405,14 @@ sc2ManagementIpAddress OBJECT-TYPE
     DESCRIPTION  "IPv4 address of the server for management purpose with PRIMEQUEST systems only.
                   This is the interface address for managing a server by external management clients
                   when the server has more than one LAN interfaces (represented by an IPv4 address string)."
-    ::= { sc2Units 18 }
+    ::= { sc2UnitEntry 18 }
 
 sc2HasUefiFirmware OBJECT-TYPE
     SYNTAX       TrueFalse
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Replies whether the system is equipped with UEFI firmware"
-    ::= { sc2Units 19 }
+    ::= { sc2UnitEntry 19 }
 
 sc2ManagementIpAddressV6 OBJECT-TYPE
     SYNTAX       DisplayString
@@ -417,7 +421,7 @@ sc2ManagementIpAddressV6 OBJECT-TYPE
     DESCRIPTION  "IPv6 address of the server for management purpose with PRIMEQUEST systems only.
                   This is the interface address for managing a server by external management clients
                   when the server has more than one LAN interfaces (represented by an IPv6 address string)."
-    ::= { sc2Units 20 }
+    ::= { sc2UnitEntry 20 }
 
 
 sc2UnitTableUpdateCount OBJECT-TYPE
@@ -440,22 +444,22 @@ sc2UnitTableUpdateCount OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2UnitParentTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2UnitParents
+    SYNTAX       SEQUENCE OF Sc2UnitParentEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Parent-child relationship of all units: list the parent of all available units.
                   Only units that have a parent are listed in this table."
     ::= { sc2UnitInformation 5 }
 
-sc2UnitParents OBJECT-TYPE
-    SYNTAX       Sc2UnitParents
+sc2UnitParentEntry OBJECT-TYPE
+    SYNTAX       Sc2UnitParentEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2pUnitId }
     ::= { sc2UnitParentTable 1 }
 
-Sc2UnitParents ::= SEQUENCE
+Sc2UnitParentEntry ::= SEQUENCE
 {
     sc2pUnitId
         INTEGER,
@@ -470,22 +474,22 @@ sc2pUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2UnitParents 1 }
+    ::= { sc2UnitParentEntry 1 }
 
 sc2ParentUnit OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier of this unit's parent"
-    ::= { sc2UnitParents 2 }
+    ::= { sc2UnitParentEntry 2 }
 
 sc2ParentUnitClass OBJECT-TYPE
     SYNTAX       UnitClass
     ACCESS       read-only
     STATUS       mandatory
-    DESCRIPTION  "Parent unit classification (type). This is the same value as in sc2Units
+    DESCRIPTION  "Parent unit classification (type). This is the same value as in sc2UnitEntry
                   table, but can be used for easy class detection."
-    ::= { sc2UnitParents 3 }
+    ::= { sc2UnitParentEntry 3 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -500,22 +504,22 @@ sc2ParentUnitClass OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2UnitChildTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2UnitChilds
+    SYNTAX       SEQUENCE OF Sc2UnitChildEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Parent-child relationship of all units: list all children of all available units.
                   Only units that have children are listed in this table."
     ::= { sc2UnitInformation 6 }
 
-sc2UnitChilds OBJECT-TYPE
-    SYNTAX       Sc2UnitChilds
+sc2UnitChildEntry OBJECT-TYPE
+    SYNTAX       Sc2UnitChildEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2cUnitId, sc2cChildNr }
     ::= { sc2UnitChildTable 1 }
 
-Sc2UnitChilds ::= SEQUENCE
+Sc2UnitChildEntry ::= SEQUENCE
 {
     sc2cUnitId
         INTEGER,
@@ -532,29 +536,29 @@ sc2cUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2UnitChilds 1 }
+    ::= { sc2UnitChildEntry 1 }
 
 sc2cChildNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Child number (index, 1..n)"
-    ::= { sc2UnitChilds 2 }
+    ::= { sc2UnitChildEntry 2 }
 
 sc2ChildUnit OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Child unit"
-    ::= { sc2UnitChilds 3 }
+    ::= { sc2UnitChildEntry 3 }
 
 sc2ChildUnitClass OBJECT-TYPE
     SYNTAX       UnitClass
     ACCESS       read-only
     STATUS       mandatory
-    DESCRIPTION  "Unit classification (type). This is the same value as in sc2Units
+    DESCRIPTION  "Unit classification (type). This is the same value as in sc2UnitEntry
                   table, but can be used for easy class detection."
-    ::= { sc2UnitChilds 4 }
+    ::= { sc2UnitChildEntry 4 }
 
 
 
@@ -580,21 +584,21 @@ sc2Management OBJECT IDENTIFIER		::= { fscServerControl2 3 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2ManagementNodeTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2ManagementNodes
+    SYNTAX       SEQUENCE OF Sc2ManagementNodeEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "SNMP management node addresses (how to address the units)"
     ::= { sc2Management 1 }
 
-sc2ManagementNodes OBJECT-TYPE
-    SYNTAX       Sc2ManagementNodes
+sc2ManagementNodeEntry OBJECT-TYPE
+    SYNTAX       Sc2ManagementNodeEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2mnUnitId, sc2mnNodeNr }
     ::= { sc2ManagementNodeTable 1 }
 
-Sc2ManagementNodes ::= SEQUENCE
+Sc2ManagementNodeEntry ::= SEQUENCE
 {
     sc2mnUnitId
         INTEGER,
@@ -637,14 +641,14 @@ sc2mnUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2ManagementNodes 1 }
+    ::= { sc2ManagementNodeEntry 1 }
 
 sc2mnNodeNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node address number (index, 1..n)"
-    ::= { sc2ManagementNodes 2 }
+    ::= { sc2ManagementNodeEntry 2 }
 
 sc2UnitNodeIfType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -657,35 +661,35 @@ sc2UnitNodeIfType OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node interface type"
-    ::= { sc2ManagementNodes 3 }
+    ::= { sc2ManagementNodeEntry 3 }
 
 sc2UnitNodeAddress OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node address (e.g. 192.168.0.100)"
-    ::= { sc2ManagementNodes 4 }
+    ::= { sc2ManagementNodeEntry 4 }
 
 sc2UnitNodeIpNetmask OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node address (e.g. 255.255.255.128)"
-    ::= { sc2ManagementNodes 5 }
+    ::= { sc2ManagementNodeEntry 5 }
 
 sc2UnitNodeGateway OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node address (e.g. 192.168.0.126)"
-    ::= { sc2ManagementNodes 6 }
+    ::= { sc2ManagementNodeEntry 6 }
 
 sc2UnitNodeName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node name (DNS name, e.g. apollo.ts.fujitsu.com)"
-    ::= { sc2ManagementNodes 7 }
+    ::= { sc2ManagementNodeEntry 7 }
 
 sc2UnitNodeClass OBJECT-TYPE
     SYNTAX       INTEGER
@@ -707,14 +711,14 @@ sc2UnitNodeClass OBJECT-TYPE
                     secondary-remote:        remote management controller (in an RSB concentrator environment)
                                       secondary-remote-backup: backup remote management controller
                                       baseboard-controller:    local baseboard management controller (BMC)"
-    ::= { sc2ManagementNodes 8 }
+    ::= { sc2ManagementNodeEntry 8 }
 
 sc2UnitNodeMacAddress OBJECT-TYPE
     SYNTAX       PhysAddress
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node hardware (MAC) address"
-    ::= { sc2ManagementNodes 9 }
+    ::= { sc2ManagementNodeEntry 9 }
 
 sc2UnitNodeUseDHCP OBJECT-TYPE
     SYNTAX       INTEGER
@@ -726,7 +730,7 @@ sc2UnitNodeUseDHCP OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Management node uses DHCP to obtain its address"
-    ::= { sc2ManagementNodes 10 }
+    ::= { sc2ManagementNodeEntry 10 }
 
 sc2UnitNodeControllerType OBJECT-TYPE
     SYNTAX       DisplayString
@@ -735,7 +739,7 @@ sc2UnitNodeControllerType OBJECT-TYPE
     DESCRIPTION  "The type of the remote management controller (for identification),
                   like 'RSB', 'RSB S2', 'RSB S2 LP'... These names will not be changed
                   if defined once."
-    ::= { sc2ManagementNodes 11 }
+    ::= { sc2ManagementNodeEntry 11 }
 
 sc2UnitNodeControllerModel OBJECT-TYPE
     SYNTAX       DisplayString
@@ -745,14 +749,14 @@ sc2UnitNodeControllerModel OBJECT-TYPE
                   like 'Remote Service Board', 'RemoteView Service Board S2'...
                   This name should not be used for identification, only for displaying
                   (can be changed in different firmware versions)!"
-    ::= { sc2ManagementNodes 12 }
+    ::= { sc2ManagementNodeEntry 12 }
 
 sc2UnitNodeControllerFWVersion OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "The FW version of the remote management controller"
-    ::= { sc2ManagementNodes 13 }
+    ::= { sc2ManagementNodeEntry 13 }
 
 sc2UnitNodeControllerStorage OBJECT-TYPE
     SYNTAX       INTEGER
@@ -764,28 +768,28 @@ sc2UnitNodeControllerStorage OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status of the controller specific external storage used for the system management."
-    ::= { sc2ManagementNodes 14 }
+    ::= { sc2ManagementNodeEntry 14 }
 
 sc2UnitNodeSNMPEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "SNMP interface is enabled at management node"
-    ::= { sc2ManagementNodes 15 }
+    ::= { sc2ManagementNodeEntry 15 }
 
 sc2UnitNodeCIMEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CIM protocol is enabled at management node"
-    ::= { sc2ManagementNodes 16 }
+    ::= { sc2ManagementNodeEntry 16 }
 
 sc2UnitNodeRemoteIPMIEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Remote IPMI is enabled at management node"
-    ::= { sc2ManagementNodes 17 }
+    ::= { sc2ManagementNodeEntry 17 }
 
 
 sc2NodeTableUpdateCount OBJECT-TYPE
@@ -819,21 +823,21 @@ sc2ManagementChannelType OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2ManagementProcessorTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2ManagementProcessors
+    SYNTAX       SEQUENCE OF Sc2ManagementProcessorEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "System management service processors"
     ::= { sc2Management 4 }
 
-sc2ManagementProcessors OBJECT-TYPE
-    SYNTAX       Sc2ManagementProcessors
+sc2ManagementProcessorEntry OBJECT-TYPE
+    SYNTAX       Sc2ManagementProcessorEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2spUnitId, sc2spProcessorNr }
     ::= { sc2ManagementProcessorTable 1 }
 
-Sc2ManagementProcessors ::= SEQUENCE
+Sc2ManagementProcessorEntry ::= SEQUENCE
 {
     sc2spUnitId
         INTEGER,
@@ -860,28 +864,28 @@ sc2spUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2ManagementProcessors 1 }
+    ::= { sc2ManagementProcessorEntry 1 }
 
 sc2spProcessorNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Service processor number (index, 1..n)"
-    ::= { sc2ManagementProcessors 2 }
+    ::= { sc2ManagementProcessorEntry 2 }
 
 sc2spModelName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Service processor model name"
-    ::= { sc2ManagementProcessors 3 }
+    ::= { sc2ManagementProcessorEntry 3 }
 
 sc2spFirmwareVersion OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Service processor firmware version / revision"
-    ::= { sc2ManagementProcessors 4 }
+    ::= { sc2ManagementProcessorEntry 4 }
 
 sc2spBatteryStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -897,7 +901,7 @@ sc2spBatteryStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Service processor backup battery status"
-    ::= { sc2ManagementProcessors 5 }
+    ::= { sc2ManagementProcessorEntry 5 }
 
 sc2spBatteryDischargeTime OBJECT-TYPE
     SYNTAX       INTEGER
@@ -905,7 +909,7 @@ sc2spBatteryDischargeTime OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Maximum time (in seconds) this backup battery can discharged,
                   after that a shutdown will be performed (-1 = unknown)"
-    ::= { sc2ManagementProcessors 6 }
+    ::= { sc2ManagementProcessorEntry 6 }
 
 sc2spTimeOnBattery OBJECT-TYPE
     SYNTAX       Counter
@@ -913,7 +917,7 @@ sc2spTimeOnBattery OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Time (in seconds) the service processor is running on battery
                   since power fail (will be cleared on power recovery)"
-    ::= { sc2ManagementProcessors 7 }
+    ::= { sc2ManagementProcessorEntry 7 }
 
 sc2spDoBatteryChargeCycle OBJECT-TYPE
     SYNTAX       INTEGER
@@ -921,7 +925,7 @@ sc2spDoBatteryChargeCycle OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Perform a discharge/charge cycle on the backup battery by writing
                   a non-zero value. Reading this object just returns the value 0."
-    ::= { sc2ManagementProcessors 8 }
+    ::= { sc2ManagementProcessorEntry 8 }
 
 sc2spBatteryChargeLevel OBJECT-TYPE
     SYNTAX       Gauge
@@ -929,7 +933,7 @@ sc2spBatteryChargeLevel OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Reads the current charge level of the rechargeable battery
                   (in percent of the maximum capacity)."
-    ::= { sc2ManagementProcessors 9 }
+    ::= { sc2ManagementProcessorEntry 9 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -943,21 +947,21 @@ sc2spBatteryChargeLevel OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2ManagedUpsNodeTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2ManagedUpsNodes
+    SYNTAX       SEQUENCE OF Sc2ManagedUpsNodeEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "UPS nodes managed by the units"
     ::= { sc2Management 5 }
 
-sc2ManagedUpsNodes OBJECT-TYPE
-    SYNTAX       Sc2ManagedUpsNodes
+sc2ManagedUpsNodeEntry OBJECT-TYPE
+    SYNTAX       Sc2ManagedUpsNodeEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2upsUnitId, sc2upsNr }
     ::= { sc2ManagedUpsNodeTable 1 }
 
-Sc2ManagedUpsNodes ::= SEQUENCE
+Sc2ManagedUpsNodeEntry ::= SEQUENCE
 {
     sc2upsUnitId
         INTEGER,
@@ -980,35 +984,35 @@ sc2upsUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2ManagedUpsNodes 1 }
+    ::= { sc2ManagedUpsNodeEntry 1 }
 
 sc2upsNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "UPS number (index, 1..n)"
-    ::= { sc2ManagedUpsNodes 2 }
+    ::= { sc2ManagedUpsNodeEntry 2 }
 
 sc2upsVendorName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "UPS vendor name"
-    ::= { sc2ManagedUpsNodes 3 }
+    ::= { sc2ManagedUpsNodeEntry 3 }
 
 sc2upsModelName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "UPS model name"
-    ::= { sc2ManagedUpsNodes 4 }
+    ::= { sc2ManagedUpsNodeEntry 4 }
 
 sc2upsMgmtAddress OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "UPS management interface target address (represented as string; may contain an IP V4 address, IP V6 address or a URL)"
-    ::= { sc2ManagedUpsNodes 5 }
+    ::= { sc2ManagedUpsNodeEntry 5 }
 
 sc2upsMibRoot OBJECT-TYPE
     SYNTAX       DisplayString
@@ -1016,14 +1020,14 @@ sc2upsMibRoot OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "UPS MIB root OID; specifies the root OID of the MIB to be used to
                   query UPS via SNMP (empty string if no SNMP agent available)"
-    ::= { sc2ManagedUpsNodes 6 }
+    ::= { sc2ManagedUpsNodeEntry 6 }
 
 sc2upsSnmpCommunity OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "UPS SNMP community name (empty string if no SNMP agent available)"
-    ::= { sc2ManagedUpsNodes 7 }
+    ::= { sc2ManagedUpsNodeEntry 7 }
 
 
 sc2UpsNodeTableUpdateCount OBJECT-TYPE
@@ -1057,21 +1061,21 @@ sc2ServerInformation OBJECT IDENTIFIER		::= { fscServerControl2 4 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2ServerTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2Servers
+    SYNTAX       SEQUENCE OF Sc2ServerEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table containing information about the available servers"
     ::= { sc2ServerInformation 1 }
 
-sc2Servers OBJECT-TYPE
-    SYNTAX       Sc2Servers
+sc2ServerEntry OBJECT-TYPE
+    SYNTAX       Sc2ServerEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2srvUnitId }
     ::= { sc2ServerTable 1 }
 
-Sc2Servers ::= SEQUENCE
+Sc2ServerEntry ::= SEQUENCE
 {
     sc2srvUnitId
         INTEGER,
@@ -1106,14 +1110,14 @@ sc2srvUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2Servers 1 }
+    ::= { sc2ServerEntry 1 }
 
 sc2srvPhysicalMemory OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Size of physical main memory installed (MBytes)"
-    ::= { sc2Servers 2 }
+    ::= { sc2ServerEntry 2 }
 
 sc2srvLastBootResult OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1130,7 +1134,7 @@ sc2srvLastBootResult OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Result of last system boot"
-    ::= { sc2Servers 3 }
+    ::= { sc2ServerEntry 3 }
 
 sc2srvCurrentBootStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1151,7 +1155,7 @@ sc2srvCurrentBootStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status of the current boot"
-    ::= { sc2Servers 4 }
+    ::= { sc2ServerEntry 4 }
 
 sc2srvShutdownCommand OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1182,7 +1186,7 @@ sc2srvShutdownCommand OBJECT-TYPE
                       raise-nmi: raise an NMI (normally causes debugger to start)
                       reset: execute a reset (without shutdown)
                   The value unknown(1) cannot be set."
-    ::= { sc2Servers 5 }
+    ::= { sc2ServerEntry 5 }
 
 sc2srvShutdownDelay OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1193,7 +1197,7 @@ sc2srvShutdownDelay OBJECT-TYPE
                    0 = immediate action, no delay
                   -1 = unknown (delay not supported)
                   The value unknown(-1) cannot be set."
-    ::= { sc2Servers 6 }
+    ::= { sc2ServerEntry 6 }
 
 sc2srvUUID OBJECT-TYPE
     SYNTAX       DisplayString
@@ -1202,7 +1206,7 @@ sc2srvUUID OBJECT-TYPE
     DESCRIPTION  "Universal Unique ID (UUID) number (as specified in RFC 4122; shown in network byte order, big-endian) -
                   this is a world-wide unique ID number of the server.
                   Can be used for identifying a server. The format is like this: '33221100-5544-7766-8899-AABBCCDDEEFF'"
-    ::= { sc2Servers 7 }
+    ::= { sc2ServerEntry 7 }
 
 sc2srvPhysicalMemoryOs OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1211,7 +1215,7 @@ sc2srvPhysicalMemoryOs OBJECT-TYPE
     DESCRIPTION  "Size of physical main memory available to the operating system (MBytes).
                   This value is similar to 'sc2srvPhysicalMemory', but may be less if the system
                   has mirror or hot spare memory modules."
-    ::= { sc2Servers 8 }
+    ::= { sc2ServerEntry 8 }
 
 sc2srvUUIDWireFormat OBJECT-TYPE
     SYNTAX       DisplayString
@@ -1220,7 +1224,7 @@ sc2srvUUIDWireFormat OBJECT-TYPE
     DESCRIPTION  "Universal Unique ID (UUID) number (shown in the wire format; little-endian for the first three fields,
                   as consistently used in the PC industry) - this is a world-wide unique ID number of the server.
                   Can be used for identifying a server. The format is like this: '00112233-4455-6677-8899-AABBCCDDEEFF'"
-    ::= { sc2Servers 9 }
+    ::= { sc2ServerEntry 9 }
 
 sc2srvOsPlatform OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1232,28 +1236,28 @@ sc2srvOsPlatform OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Reports about the current operating system platform (x86, x64)"
-    ::= { sc2Servers 10 }
+    ::= { sc2ServerEntry 10 }
 
 sc2srvBiosVersion OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System BIOS version"
-    ::= { sc2Servers 11 }
+    ::= { sc2ServerEntry 11 }
 
 sc2srvHasEncryptedPartitions OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Specifies whether encrypted file systems (e.g. by Windows BitLocker) are used (may prevent from BIOS updates)"
-    ::= { sc2Servers 12 }
+    ::= { sc2ServerEntry 12 }
 
 sc2srvTrustedExecutionTechnologyEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Specifies whether Intel Trusted Execution Technology (TXT) is enabled (may prevent from BIOS updates)"
-    ::= { sc2Servers 13 }
+    ::= { sc2ServerEntry 13 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -1267,21 +1271,21 @@ sc2srvTrustedExecutionTechnologyEnabled OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2UnitPowerOnOffTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2UnitPowerOnOff
+    SYNTAX       SEQUENCE OF Sc2UnitPowerOnOffEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Unit power-on and -off information"
     ::= { sc2ServerInformation 2 }
 
-sc2UnitPowerOnOff OBJECT-TYPE
-    SYNTAX       Sc2UnitPowerOnOff
+sc2UnitPowerOnOffEntry OBJECT-TYPE
+    SYNTAX       Sc2UnitPowerOnOffEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2ooUnitId }
     ::= { sc2UnitPowerOnOffTable 1 }
 
-Sc2UnitPowerOnOff ::= SEQUENCE
+Sc2UnitPowerOnOffEntry ::= SEQUENCE
 {
     sc2ooUnitId
         INTEGER,
@@ -1314,7 +1318,7 @@ sc2ooUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2UnitPowerOnOff 1 }
+    ::= { sc2UnitPowerOnOffEntry 1 }
 
 sc2PowerOnOffStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1326,7 +1330,7 @@ sc2PowerOnOffStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Current power on/off status"
-    ::= { sc2UnitPowerOnOff 2 }
+    ::= { sc2UnitPowerOnOffEntry 2 }
 
 sc2LastPowerOffSource OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1367,7 +1371,7 @@ sc2LastPowerOffSource OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Reason why the system was switched off last time"
-    ::= { sc2UnitPowerOnOff 3 }
+    ::= { sc2UnitPowerOnOffEntry 3 }
 
 sc2LastPowerOnSource OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1406,35 +1410,35 @@ sc2LastPowerOnSource OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Source the system was switched on from"
-    ::= { sc2UnitPowerOnOff 4 }
+    ::= { sc2UnitPowerOnOffEntry 4 }
 
 sc2LastPowerOnTime OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Time and date (UTC) the system was booted (seconds since 1/1/1970; 0 = unknown or not available)"
-    ::= { sc2UnitPowerOnOff 5 }
+    ::= { sc2UnitPowerOnOffEntry 5 }
 
 sc2PowerOnCounts OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Tells how often the server was switched on in its life (0 = unknown or not available)"
-    ::= { sc2UnitPowerOnOff 6 }
+    ::= { sc2UnitPowerOnOffEntry 6 }
 
 sc2PowerOnDuration OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Tells how long the system has stayed ON in its life (in seconds; 0 = unknown or not available)"
-    ::= { sc2UnitPowerOnOff 7 }
+    ::= { sc2UnitPowerOnOffEntry 7 }
 
 sc2PowerOffDuration OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Tells how long the system has stayed OFF in its life (in seconds; 0 = unknown or not available)"
-    ::= { sc2UnitPowerOnOff 8 }
+    ::= { sc2UnitPowerOnOffEntry 8 }
 
 sc2PowerFailRecovery OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1453,7 +1457,7 @@ sc2PowerFailRecovery OBJECT-TYPE
                       remain-off(4)    : server remains off on power resume.
                       switch-on(5)     : server is always switched on on power resume.
                   The value unknown(1) cannot be set, a SET will deliver 'badValue'."
-    ::= { sc2UnitPowerOnOff 9 }
+    ::= { sc2UnitPowerOnOffEntry 9 }
 
 sc2PowerCommand OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1473,7 +1477,7 @@ sc2PowerCommand OBJECT-TYPE
                   No graceful system shutdown is performed - use sc2srvShutdownCommand if
                   shutdown of a server is requested!
                   The value unknown(1) cannot be set and will be delivered if the object is read."
-    ::= { sc2UnitPowerOnOff 10 }
+    ::= { sc2UnitPowerOnOffEntry 10 }
 
 sc2PowerSupplyRedundancy OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
@@ -1481,7 +1485,7 @@ sc2PowerSupplyRedundancy OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Specifies whether the power supply system contains redundant power supplies
                   and whether redundancy is available"
-    ::= { sc2UnitPowerOnOff 11 }
+    ::= { sc2UnitPowerOnOffEntry 11 }
 
 sc2PowerSupplyMatchStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1493,7 +1497,7 @@ sc2PowerSupplyMatchStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status of power supply matching - 'ok' if power supplies do not mismatch"
-    ::= { sc2UnitPowerOnOff 12 }
+    ::= { sc2UnitPowerOnOffEntry 12 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -1507,21 +1511,21 @@ sc2PowerSupplyMatchStatus OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2PerformanceTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2Performance
+    SYNTAX       SEQUENCE OF Sc2PerformanceEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Server performance and utilisation information (Obsolete! Please use sc2PerformanceValueTable!)"
     ::= { sc2ServerInformation 3 }
 
-sc2Performance OBJECT-TYPE
-    SYNTAX       Sc2Performance
+sc2PerformanceEntry OBJECT-TYPE
+    SYNTAX       Sc2PerformanceEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2perfUnitId, sc2perfNr }
     ::= { sc2PerformanceTable 1 }
 
-Sc2Performance ::= SEQUENCE
+Sc2PerformanceEntry ::= SEQUENCE
 {
     sc2perfUnitId
         INTEGER,
@@ -1542,14 +1546,14 @@ sc2perfUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2Performance 1 }
+    ::= { sc2PerformanceEntry 1 }
 
 sc2perfNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Server performance entry number (index, 1..n)"
-    ::= { sc2Performance 2 }
+    ::= { sc2PerformanceEntry 2 }
 
 sc2PerformanceType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1566,14 +1570,14 @@ sc2PerformanceType OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Server performance object type (description see below)"
-    ::= { sc2Performance 3 }
+    ::= { sc2PerformanceEntry 3 }
 
 sc2PerformanceObjectNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Server performance object number (0..n; for types with multiple objects)"
-    ::= { sc2Performance 4 }
+    ::= { sc2PerformanceEntry 4 }
 
 sc2PerformanceName OBJECT-TYPE
     SYNTAX       DisplayString
@@ -1581,7 +1585,7 @@ sc2PerformanceName OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Name (short description) of the performance value (e.g. 'CPU1').
                   Can be used for displaying a list of performance values in the management frontend."
-    ::= { sc2Performance 5 }
+    ::= { sc2PerformanceEntry 5 }
 
 sc2PerformanceValue OBJECT-TYPE
     SYNTAX       Gauge
@@ -1596,7 +1600,7 @@ sc2PerformanceValue OBJECT-TYPE
                      memory-physical: Physical memory usage in MBytes
                      memory-total:    Total memory usage (physical + virtual) in MBytes
                      memory-percent:  Physical memory usage in percent"
-    ::= { sc2Performance 6 }
+    ::= { sc2PerformanceEntry 6 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -1610,21 +1614,21 @@ sc2PerformanceValue OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2TimerOnOffTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2TimerOnOff
+    SYNTAX       SEQUENCE OF Sc2TimerOnOffEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Power on/off timer table"
     ::= { sc2ServerInformation 4 }
 
-sc2TimerOnOff OBJECT-TYPE
-    SYNTAX       Sc2TimerOnOff
+sc2TimerOnOffEntry OBJECT-TYPE
+    SYNTAX       Sc2TimerOnOffEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2tooUnitId, sc2tooDayOfWeek }
     ::= { sc2TimerOnOffTable 1 }
 
-Sc2TimerOnOff ::= SEQUENCE
+Sc2TimerOnOffEntry ::= SEQUENCE
 {
     sc2tooUnitId
         INTEGER,
@@ -1641,14 +1645,14 @@ sc2tooUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2TimerOnOff 1 }
+    ::= { sc2TimerOnOffEntry 1 }
 
 sc2tooDayOfWeek OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Day of the week the times should act upon (index); 1=Sunday, 2=Monday..."
-    ::= { sc2TimerOnOff 2 }
+    ::= { sc2TimerOnOffEntry 2 }
 
 sc2OnTime OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1657,7 +1661,7 @@ sc2OnTime OBJECT-TYPE
     DESCRIPTION  "Time the system should be switched on (by the real-time clock;
                   in minutes since midnight; -1 = disabled, no on time).
                   Only values -1 and 0..1439 are allowed."
-    ::= { sc2TimerOnOff 3 }
+    ::= { sc2TimerOnOffEntry 3 }
 
 sc2OffTime OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1666,7 +1670,7 @@ sc2OffTime OBJECT-TYPE
     DESCRIPTION  "Time the system should be switched off (by the real-time clock of software;
                   in minutes since midnight; -1 = disabled, no on time).
                   Only values -1 and 0..1439 are allowed."
-    ::= { sc2TimerOnOff 4 }
+    ::= { sc2TimerOnOffEntry 4 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -1680,21 +1684,21 @@ sc2OffTime OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2PowerMonitoringTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2PowerMonitoring
+    SYNTAX       SEQUENCE OF Sc2PowerMonitoringEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Power monitoring table"
     ::= { sc2ServerInformation 5 }
 
-sc2PowerMonitoring OBJECT-TYPE
-    SYNTAX       Sc2PowerMonitoring
+sc2PowerMonitoringEntry OBJECT-TYPE
+    SYNTAX       Sc2PowerMonitoringEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2pmUnitId }
     ::= { sc2PowerMonitoringTable 1 }
 
-Sc2PowerMonitoring ::= SEQUENCE
+Sc2PowerMonitoringEntry ::= SEQUENCE
 {
     sc2pmUnitId
         INTEGER,
@@ -1727,7 +1731,7 @@ sc2pmUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2PowerMonitoring 1 }
+    ::= { sc2PowerMonitoringEntry 1 }
 
 sc2pmCurrentPowerMonitoringAvailable OBJECT-TYPE
     SYNTAX       TrueFalse
@@ -1736,7 +1740,7 @@ sc2pmCurrentPowerMonitoringAvailable OBJECT-TYPE
     DESCRIPTION  "Power monitoring and control available on this server:
                      true:  Power monitoring and power control is available
                      false: Power monitoring and power control is not available"
-    ::= { sc2PowerMonitoring 2 }
+    ::= { sc2PowerMonitoringEntry 2 }
 
 sc2pmCurrentPowerMonitoringEnabled OBJECT-TYPE
     SYNTAX       TrueFalse
@@ -1745,21 +1749,21 @@ sc2pmCurrentPowerMonitoringEnabled OBJECT-TYPE
     DESCRIPTION  "Power monitoring enable value:
                      true:  Power monitoring and data gathering is enabled
                      false: Power monitoring and data gathering is disabled or not available"
-    ::= { sc2PowerMonitoring 3 }
+    ::= { sc2PowerMonitoringEntry 3 }
 
 sc2pmNominalPowerConsumption OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Nominal (maximum) value of the system's power consumption (in Watts; -1 if value not available)"
-    ::= { sc2PowerMonitoring 4 }
+    ::= { sc2PowerMonitoringEntry 4 }
 
 sc2pmCurrentPowerConsumption OBJECT-TYPE
     SYNTAX       Gauge
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Current value of the system's power consumption (in Watts; -1 if value not available)"
-    ::= { sc2PowerMonitoring 5 }
+    ::= { sc2PowerMonitoringEntry 5 }
 
 sc2pmCurrentPowerControl OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1781,7 +1785,7 @@ sc2pmCurrentPowerControl OBJECT-TYPE
                      automatic:        The baseboard management controller automatically controls power consumption between good performance and low power consumption
                      limited:          The baseboard management controller controls power consumption by power limit
                      low-noise:        The baseboard management controller controls the power to ensure running with lowest noise"
-    ::= { sc2PowerMonitoring 6 }
+    ::= { sc2PowerMonitoringEntry 6 }
 
 sc2pmPowerLimitStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1799,28 +1803,28 @@ sc2pmPowerLimitStatus OBJECT-TYPE
                     warning:  power consumption is above warning threshold (sc2pmPowerLimitWarning) but below limit
                     error:    power consumption is above limit (sc2pmPowerLimitThreshold)
                     disabled: power consumption limiting is disabled"
-    ::= { sc2PowerMonitoring 7 }
+    ::= { sc2PowerMonitoringEntry 7 }
 
 sc2pmPowerLimitThreshold OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Maximum limit value of the system's power consumption (in Watts; -1 if value not available; only valid if limiting enabled)"
-    ::= { sc2PowerMonitoring 8 }
+    ::= { sc2PowerMonitoringEntry 8 }
 
 sc2pmPowerLimitWarning OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Warning limit level (in percent of the maximum limit threshold; 0 if value not available; only valid if limiting enabled)"
-    ::= { sc2PowerMonitoring 9 }
+    ::= { sc2PowerMonitoringEntry 9 }
 
 sc2pmRedundancyCritLevel OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Upper critical power consumption level (in Watts; -1 if value not available); power supply redundancy lost if level is exceeded"
-    ::= { sc2PowerMonitoring 10 }
+    ::= { sc2PowerMonitoringEntry 10 }
 
 sc2pmPowerControlMode OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1844,7 +1848,7 @@ sc2pmPowerControlMode OBJECT-TYPE
                      scheduled:        The baseboard management controller controls power consumption by schedule
                      limited:          The baseboard management controller controls power consumption by power limit
                      low-noise:        The baseboard management controller controls the power to ensure running with lowest noise"
-    ::= { sc2PowerMonitoring 11 }
+    ::= { sc2PowerMonitoringEntry 11 }
 
 sc2pmPowerDisplayUnit OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1858,7 +1862,7 @@ sc2pmPowerDisplayUnit OBJECT-TYPE
     DESCRIPTION  "Configurd unit for the display of power consumption values:
                      Watt:         Power consumption values are displayed in Watts
                      Btu/h: Power consumption values are displyed in Btu"
-    ::= { sc2PowerMonitoring 12 }
+    ::= { sc2PowerMonitoringEntry 12 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -1873,22 +1877,22 @@ sc2pmPowerDisplayUnit OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2UtilizationHistoryTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2UtilizationHistory
+    SYNTAX       SEQUENCE OF Sc2UtilizationHistoryEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Utilization history table (for power consumption); table only contains existing
                   values (no values for non-existing values)"
     ::= { sc2ServerInformation 6 }
 
-sc2UtilizationHistory OBJECT-TYPE
-    SYNTAX       Sc2UtilizationHistory
+sc2UtilizationHistoryEntry OBJECT-TYPE
+    SYNTAX       Sc2UtilizationHistoryEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2uthUnitId, sc2uthEntity, sc2uthTimeStamp }
     ::= { sc2UtilizationHistoryTable 1 }
 
-Sc2UtilizationHistory ::= SEQUENCE
+Sc2UtilizationHistoryEntry ::= SEQUENCE
 {
     sc2uthUnitId
         INTEGER,
@@ -1911,7 +1915,7 @@ sc2uthUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2UtilizationHistory 1 }
+    ::= { sc2UtilizationHistoryEntry 1 }
 
 sc2uthEntity OBJECT-TYPE
     SYNTAX       INTEGER
@@ -1926,14 +1930,14 @@ sc2uthEntity OBJECT-TYPE
                     powerConsumptionDay:   power consumption values of the last 24 hours; one value (Watts) per minute
                     powerConsumptionMonth: power consumption values of the last month; one value (Watts) per hour
                     powerConsumptionYear:  power consumption values of the last year; one value (Watts) per day"
-    ::= { sc2UtilizationHistory 2 }
+    ::= { sc2UtilizationHistoryEntry 2 }
 
 sc2uthTimeStamp OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Time stamp of the currenty history entry (time_t = seconds since 1/1/1970, 0:00 AM as GMT)"
-    ::= { sc2UtilizationHistory 3 }
+    ::= { sc2UtilizationHistoryEntry 3 }
 
 sc2uthHardwareUUID OBJECT-TYPE
     SYNTAX       DisplayString
@@ -1941,28 +1945,28 @@ sc2uthHardwareUUID OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "UUID of the hardware instance that delivered the value (from object sc2srvUUID);
                   may change if an installation is migrated to another hardware (e.g. in blade environments)"
-    ::= { sc2UtilizationHistory 4 }
+    ::= { sc2UtilizationHistoryEntry 4 }
 
 sc2uthAverageValue OBJECT-TYPE
     SYNTAX       Gauge
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Average value (in Watts) within the monitored time period (minute, hour, day)"
-    ::= { sc2UtilizationHistory 5 }
+    ::= { sc2UtilizationHistoryEntry 5 }
 
 sc2uthMinValue OBJECT-TYPE
     SYNTAX       Gauge
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Minimum (lowest) value within the monitored time period"
-    ::= { sc2UtilizationHistory 6 }
+    ::= { sc2UtilizationHistoryEntry 6 }
 
 sc2uthMaxValue OBJECT-TYPE
     SYNTAX       Gauge
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Maximum (highest) value within the monitored time period"
-    ::= { sc2UtilizationHistory 7 }
+    ::= { sc2UtilizationHistoryEntry 7 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -1976,21 +1980,21 @@ sc2uthMaxValue OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2PowerSourceInformationTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2PowerSourceInformation
+    SYNTAX       SEQUENCE OF Sc2PowerSourceInformationEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Power source information table"
     ::= { sc2ServerInformation 7 }
 
-sc2PowerSourceInformation OBJECT-TYPE
-    SYNTAX       Sc2PowerSourceInformation
+sc2PowerSourceInformationEntry OBJECT-TYPE
+    SYNTAX       Sc2PowerSourceInformationEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2psiUnitId }
     ::= { sc2PowerSourceInformationTable 1 }
 
-Sc2PowerSourceInformation ::= SEQUENCE
+Sc2PowerSourceInformationEntry ::= SEQUENCE
 {
     sc2psiUnitId
         INTEGER,
@@ -2007,14 +2011,14 @@ sc2psiUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2PowerSourceInformation 1 }
+    ::= { sc2PowerSourceInformationEntry 1 }
 
 sc2psiPowerSourceType OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System input power source type (e.g. 'AC', 'DC')"
-    ::= { sc2PowerSourceInformation 2 }
+    ::= { sc2PowerSourceInformationEntry 2 }
 
 sc2psiPowerSourcePhase OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2026,14 +2030,14 @@ sc2psiPowerSourcePhase OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System input phase of power source."
-    ::= { sc2PowerSourceInformation 3 }
+    ::= { sc2PowerSourceInformationEntry 3 }
 
 sc2psiPowerSourceVoltage OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System nominal input voltage of power source (in Volts; -1 if value not available)."
-    ::= { sc2PowerSourceInformation 4 }
+    ::= { sc2PowerSourceInformationEntry 4 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -2047,21 +2051,21 @@ sc2psiPowerSourceVoltage OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2VirtualIoManagerTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2VirtualIoManager
+    SYNTAX       SEQUENCE OF Sc2VirtualIoManagerEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Virtual I/O Manager (VIOM) information table"
     ::= { sc2ServerInformation 8 }
 
-sc2VirtualIoManager OBJECT-TYPE
-    SYNTAX       Sc2VirtualIoManager
+sc2VirtualIoManagerEntry OBJECT-TYPE
+    SYNTAX       Sc2VirtualIoManagerEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2viomUnitId }
     ::= { sc2VirtualIoManagerTable 1 }
 
-Sc2VirtualIoManager ::= SEQUENCE
+Sc2VirtualIoManagerEntry ::= SEQUENCE
 {
     sc2viomUnitId
         INTEGER,
@@ -2080,28 +2084,28 @@ sc2viomUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2VirtualIoManager 1 }
+    ::= { sc2VirtualIoManagerEntry 1 }
 
 sc2viomCurrentManagerId OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Identification string of the VIOM manager that currently manages this server"
-    ::= { sc2VirtualIoManager 2 }
+    ::= { sc2VirtualIoManagerEntry 2 }
 
 sc2viomEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "True if the server is enabled for VIOM"
-    ::= { sc2VirtualIoManager 3 }
+    ::= { sc2VirtualIoManagerEntry 3 }
 
 sc2viomBiosSupport OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "True if the BIOS supports VIOM"
-    ::= { sc2VirtualIoManager 4 }
+    ::= { sc2VirtualIoManagerEntry 4 }
 
 sc2viomConnectionStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2111,7 +2115,7 @@ sc2viomConnectionStatus OBJECT-TYPE
                     Bit 0 - waiting for VIOM table
                     Bit 1 - waiting for inventory table
                     Bit 2 - waiting for external power-on event"
-    ::= { sc2VirtualIoManager 5 }
+    ::= { sc2VirtualIoManagerEntry 5 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -2125,21 +2129,21 @@ sc2viomConnectionStatus OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2PowerSupplyRedundancyConfigurationTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2PowerSupplyRedundancyConfiguration
+    SYNTAX       SEQUENCE OF Sc2PowerSupplyRedundancyConfigurationEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Power Supply redundancy configuration table"
     ::= { sc2ServerInformation 9 }
 
-sc2PowerSupplyRedundancyConfiguration OBJECT-TYPE
-    SYNTAX       Sc2PowerSupplyRedundancyConfiguration
+sc2PowerSupplyRedundancyConfigurationEntry OBJECT-TYPE
+    SYNTAX       Sc2PowerSupplyRedundancyConfigurationEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2PSRedUnitId }
     ::= { sc2PowerSupplyRedundancyConfigurationTable 1 }
 
-Sc2PowerSupplyRedundancyConfiguration ::= SEQUENCE
+Sc2PowerSupplyRedundancyConfigurationEntry ::= SEQUENCE
 {
     sc2PSRedUnitId
         INTEGER,
@@ -2164,7 +2168,7 @@ sc2PSRedUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2PowerSupplyRedundancyConfiguration 1 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 1 }
 
 sc2PSRedundancyMode OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2179,7 +2183,7 @@ sc2PSRedundancyMode OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Configured power supply redundancy mode; configured in Server Configuration"
-    ::= { sc2PowerSupplyRedundancyConfiguration 2 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 2 }
 
 sc2PSRedundancyModeConfig OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2200,21 +2204,21 @@ sc2PSRedundancyModeConfig OBJECT-TYPE
                     redundancy-2-1(35): 2 required + 1 spare PSU (psu-redundancy mode)
                     redundancy-3-1(51): 3 required + 1 spare PSU (psu-redundancy mode)
                     redundancy-2-2(36): 2 PSUs per AC phase (dual-ac-redundancy mode)"
-    ::= { sc2PowerSupplyRedundancyConfiguration 3 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 3 }
 
 sc2PSRedundancyRequiredPowerSupplies OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Number of power supplies required for configured redundancy mode"
-    ::= { sc2PowerSupplyRedundancyConfiguration 4 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 4 }
 
 sc2PSRedundancyPopulatedPowerSupplies OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Number of power supplies populated for configured redundancy mode"
-    ::= { sc2PowerSupplyRedundancyConfiguration 5 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 5 }
 
 sc2PSRedundancyConfigurationStatus OBJECT-TYPE
     SYNTAX       CompStatus
@@ -2222,7 +2226,7 @@ sc2PSRedundancyConfigurationStatus OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Status of the redundancy configuration; reports the status about whether
                   enough power supplies are installed to operate at the configured redundancy mode"
-    ::= { sc2PowerSupplyRedundancyConfiguration 6 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 6 }
 
 sc2PSRedundancyThresholdStatus OBJECT-TYPE
     SYNTAX       CompStatus
@@ -2230,7 +2234,7 @@ sc2PSRedundancyThresholdStatus OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Status of redundancy threshold; reports the status about whether the
                   actual power consumption exceeds the maximum power consumption level for the configured redundancy mode."
-    ::= { sc2PowerSupplyRedundancyConfiguration 7 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 7 }
 
 sc2PSRedundancyStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2249,7 +2253,7 @@ sc2PSRedundancyStatus OBJECT-TYPE
                     ok(3):            redundancy required and available
                     warning(4):       redundancy required but not available
                     error(5):         redundancy required but severe problem detected"
-    ::= { sc2PowerSupplyRedundancyConfiguration 8 }
+    ::= { sc2PowerSupplyRedundancyConfigurationEntry 8 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -2263,21 +2267,21 @@ sc2PSRedundancyStatus OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2PerformanceValueTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2PerformanceValues
+    SYNTAX       SEQUENCE OF Sc2PerformanceValuesEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Server performance and utilisation values"
     ::= { sc2ServerInformation 10 }
 
-sc2PerformanceValues OBJECT-TYPE
-    SYNTAX       Sc2PerformanceValues
+sc2PerformanceValuesEntry OBJECT-TYPE
+    SYNTAX       Sc2PerformanceValuesEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2PerfValUnitId, sc2PerfValType, sc2PerfValObjectNr }
     ::= { sc2PerformanceValueTable 1 }
 
-Sc2PerformanceValues ::= SEQUENCE
+Sc2PerformanceValuesEntry ::= SEQUENCE
 {
     sc2PerfValUnitId
         INTEGER,
@@ -2296,7 +2300,7 @@ sc2PerfValUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n). For performacne values on local system use 1!"
-    ::= { sc2PerformanceValues 1 }
+    ::= { sc2PerformanceValuesEntry 1 }
 
 sc2PerfValType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2311,14 +2315,14 @@ sc2PerfValType OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Server performance object type (description see below)"
-    ::= { sc2PerformanceValues 2 }
+    ::= { sc2PerformanceValuesEntry 2 }
 
 sc2PerfValObjectNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Server performance object number (1..n; for types with multiple objects)"
-    ::= { sc2PerformanceValues 3 }
+    ::= { sc2PerformanceValuesEntry 3 }
 
 sc2PerfValName OBJECT-TYPE
     SYNTAX       DisplayString
@@ -2326,7 +2330,7 @@ sc2PerfValName OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Name (short description) of the performance value (e.g. 'CPU1').
                   Can be used for displaying a list of performance values in the management frontend."
-    ::= { sc2PerformanceValues 4 }
+    ::= { sc2PerformanceValuesEntry 4 }
 
 sc2PerfValCurrentValue OBJECT-TYPE
     SYNTAX       Gauge
@@ -2339,7 +2343,7 @@ sc2PerfValCurrentValue OBJECT-TYPE
                      totalMemoryUsagePercent: Total memory usage (physical + virtual) in percent
                      overallCpuUsagePercent: Overall CPU load in percent
                      logicalCpuUsagePercent: Load of a single CPU in percent"
-    ::= { sc2PerformanceValues 5 }
+    ::= { sc2PerformanceValuesEntry 5 }
 
 
 
@@ -2366,21 +2370,21 @@ sc2Environment OBJECT IDENTIFIER		::= { fscServerControl2 5 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2TemperatureSensorTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2TemperatureSensors
+    SYNTAX       SEQUENCE OF Sc2TemperatureSensorsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Temperature sensors"
     ::= { sc2Environment 1 }
 
-sc2TemperatureSensors OBJECT-TYPE
-    SYNTAX       Sc2TemperatureSensors
+sc2TemperatureSensorsEntry OBJECT-TYPE
+    SYNTAX       Sc2TemperatureSensorsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2tempUnitId, sc2tempSensorNr }
     ::= { sc2TemperatureSensorTable 1 }
 
-Sc2TemperatureSensors ::= SEQUENCE
+Sc2TemperatureSensorsEntry ::= SEQUENCE
 {
     sc2tempUnitId
         INTEGER,
@@ -2407,28 +2411,28 @@ sc2tempUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2TemperatureSensors 1 }
+    ::= { sc2TemperatureSensorsEntry 1 }
 
 sc2tempSensorNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Temperature sensor number (index, 1..n)"
-    ::= { sc2TemperatureSensors 2 }
+    ::= { sc2TemperatureSensorsEntry 2 }
 
 sc2tempSensorDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Temperature sensor designation (e.g. TEMP-PS1)"
-    ::= { sc2TemperatureSensors 3 }
+    ::= { sc2TemperatureSensorsEntry 3 }
 
 sc2tempSensorIdentifier OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Temperature sensor identification string (e.g. TEMP-RSB1)"
-    ::= { sc2TemperatureSensors 4 }
+    ::= { sc2TemperatureSensorsEntry 4 }
 
 sc2tempSensorStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2446,21 +2450,21 @@ sc2tempSensorStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status of the temperature sensor"
-    ::= { sc2TemperatureSensors 5 }
+    ::= { sc2TemperatureSensorsEntry 5 }
 
 sc2tempCurrentTemperature OBJECT-TYPE
     SYNTAX       Gauge
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Current temperature at this sensor (degrees Celsius; 0 if unknown or sensor failed)"
-    ::= { sc2TemperatureSensors 6 }
+    ::= { sc2TemperatureSensorsEntry 6 }
 
 sc2tempWarningLevel OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Maximum temperature - warning level (degrees Celsius; 0 if unknown or undefined)"
-    ::= { sc2TemperatureSensors 7 }
+    ::= { sc2TemperatureSensorsEntry 7 }
 
 sc2tempCriticalLevel OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2468,7 +2472,7 @@ sc2tempCriticalLevel OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Maximum temperature - critical level (degrees Celsius; 0 if unknown or undefined),
                   system shutdown may occur if this level is exceeded"
-    ::= { sc2TemperatureSensors 8 }
+    ::= { sc2TemperatureSensorsEntry 8 }
 
 sc2tempCriticalReaction OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2480,7 +2484,7 @@ sc2tempCriticalReaction OBJECT-TYPE
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "Reaction if temperature exceeds the critical level (the value unknown(1) cannot be set)"
-    ::= { sc2TemperatureSensors 9 }
+    ::= { sc2TemperatureSensorsEntry 9 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -2494,21 +2498,21 @@ sc2tempCriticalReaction OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2FanTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2Fans
+    SYNTAX       SEQUENCE OF Sc2FanEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Cooling devices (fans, liquid cooling pumps)"
     ::= { sc2Environment 2 }
 
-sc2Fans OBJECT-TYPE
-    SYNTAX       Sc2Fans
+sc2FanEntry OBJECT-TYPE
+    SYNTAX       Sc2FanEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2fanUnitId, sc2fanNr }
     ::= { sc2FanTable 1 }
 
-Sc2Fans ::= SEQUENCE
+Sc2FanEntry ::= SEQUENCE
 {
     sc2fanUnitId
         INTEGER,
@@ -2537,28 +2541,28 @@ sc2fanUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2Fans 1 }
+    ::= { sc2FanEntry 1 }
 
 sc2fanNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Cooling device number (index, 1..n)"
-    ::= { sc2Fans 2 }
+    ::= { sc2FanEntry 2 }
 
 sc2fanDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Cooling device designation (e.g. FAN-PS1)"
-    ::= { sc2Fans 3 }
+    ::= { sc2FanEntry 3 }
 
 sc2fanIdentifier OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Cooling device identification string (e.g. FAN-1-POWERSUPPLY)"
-    ::= { sc2Fans 4 }
+    ::= { sc2FanEntry 4 }
 
 sc2fanStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2575,21 +2579,21 @@ sc2fanStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status of the cooling device"
-    ::= { sc2Fans 5 }
+    ::= { sc2FanEntry 5 }
 
 sc2fanCurrentSpeed OBJECT-TYPE
     SYNTAX       Gauge
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Current cooling device speed (revolutions per minute; 0 if unknown or failed)"
-    ::= { sc2Fans 6 }
+    ::= { sc2FanEntry 6 }
 
 sc2fanQuality OBJECT-TYPE
     SYNTAX       Gauge
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Quality of cooling device (in percent of nominal speed - measured at full speed)"
-    ::= { sc2Fans 7 }
+    ::= { sc2FanEntry 7 }
 
 sc2fanFailReaction OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2601,7 +2605,7 @@ sc2fanFailReaction OBJECT-TYPE
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "Reaction if the cooling device fails (the value unknown(1) cannot be set)"
-    ::= { sc2Fans 8 }
+    ::= { sc2FanEntry 8 }
 
 sc2fanFailShutdownDelay OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2610,7 +2614,7 @@ sc2fanFailShutdownDelay OBJECT-TYPE
     DESCRIPTION  "Delay time (in seconds) when shutdown should commit on cooling device fail
                   (if shutdown-and-off is configured; 0 = immediately,
                   -1 = unknown, cannot be set)"
-    ::= { sc2Fans 9 }
+    ::= { sc2FanEntry 9 }
 
 sc2fanCoolingDeviceType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2624,7 +2628,7 @@ sc2fanCoolingDeviceType OBJECT-TYPE
     DESCRIPTION  "Type of cooling device (whether fan or liquid cooling pump)
                     fan(2):    fan
                     liquid(3): liquid cooling pump"
-    ::= { sc2Fans 10 }
+    ::= { sc2FanEntry 10 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -2638,21 +2642,21 @@ sc2fanCoolingDeviceType OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2AirflowTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2Airflow
+    SYNTAX       SEQUENCE OF Sc2AirflowEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Exhaust airflow volume table"
     ::= { sc2Environment 3 }
 
-sc2Airflow OBJECT-TYPE
-    SYNTAX       Sc2Airflow
+sc2AirflowEntry OBJECT-TYPE
+    SYNTAX       Sc2AirflowEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2afUnitId }
     ::= { sc2AirflowTable 1 }
 
-Sc2Airflow ::= SEQUENCE
+Sc2AirflowEntry ::= SEQUENCE
 {
     sc2afUnitId
         INTEGER,
@@ -2667,21 +2671,21 @@ sc2afUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2Airflow 1 }
+    ::= { sc2AirflowEntry 1 }
 
 sc2afExhaustAirflowVolume OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System exhaust airflow volume ('-1' if value not available)"
-    ::= { sc2Airflow 2 }
+    ::= { sc2AirflowEntry 2 }
 
 sc2afExhaustAirflowVolumeUnit OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System exhaust airflow volume unit (e.g. 'cbm/h', 'ccm/min', ...)"
-    ::= { sc2Airflow 3 }
+    ::= { sc2AirflowEntry 3 }
 
 
 
@@ -2708,21 +2712,21 @@ sc2Hardware OBJECT IDENTIFIER		::= { fscServerControl2 6 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2SystemBoardTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2SystemBoard
+    SYNTAX       SEQUENCE OF Sc2SystemBoardEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "System board (main board) information"
     ::= { sc2Hardware 1 }
 
-sc2SystemBoard OBJECT-TYPE
-    SYNTAX       Sc2SystemBoard
+sc2SystemBoardEntry OBJECT-TYPE
+    SYNTAX       Sc2SystemBoardEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2sbUnitId, sc2sbBoardNr }
     ::= { sc2SystemBoardTable 1 }
 
-Sc2SystemBoard ::= SEQUENCE
+Sc2SystemBoardEntry ::= SEQUENCE
 {
     sc2sbUnitId
         INTEGER,
@@ -2747,56 +2751,56 @@ sc2sbUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2SystemBoard 1 }
+    ::= { sc2SystemBoardEntry 1 }
 
 sc2sbBoardNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System board number (index, 1..n)"
-    ::= { sc2SystemBoard 2 }
+    ::= { sc2SystemBoardEntry 2 }
 
 sc2SystemBoardModelName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Model name (e.g. 'D1297')"
-    ::= { sc2SystemBoard 3 }
+    ::= { sc2SystemBoardEntry 3 }
 
 sc2SystemBoardProductNumber OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Product number (may be identical to ModelName)"
-    ::= { sc2SystemBoard 4 }
+    ::= { sc2SystemBoardEntry 4 }
 
 sc2SystemBoardRevision OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Revision string (e.g. 'WGS1 GS3')"
-    ::= { sc2SystemBoard 5 }
+    ::= { sc2SystemBoardEntry 5 }
 
 sc2SystemBoardSerialNumber OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Serial number (not available for all boards)"
-    ::= { sc2SystemBoard 6 }
+    ::= { sc2SystemBoardEntry 6 }
 
 sc2SystemBoardDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Designation (important when multiple system boards are available)"
-    ::= { sc2SystemBoard 7 }
+    ::= { sc2SystemBoardEntry 7 }
 
 sc2SystemBoardSDCardSlotPresent OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "System board contains SD card slot"
-    ::= { sc2SystemBoard 8 }
+    ::= { sc2SystemBoardEntry 8 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -2810,21 +2814,21 @@ sc2SystemBoardSDCardSlotPresent OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2PowerSupplyTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2PowerSupply
+    SYNTAX       SEQUENCE OF Sc2PowerSupplyEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Power supplies"
     ::= { sc2Hardware 2 }
 
-sc2PowerSupply OBJECT-TYPE
-    SYNTAX       Sc2PowerSupply
+sc2PowerSupplyEntry OBJECT-TYPE
+    SYNTAX       Sc2PowerSupplyEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2psUnitId, sc2psPowerSupplyNr }
     ::= { sc2PowerSupplyTable 1 }
 
-Sc2PowerSupply ::= SEQUENCE
+Sc2PowerSupplyEntry ::= SEQUENCE
 {
     sc2psUnitId
         INTEGER,
@@ -2847,28 +2851,28 @@ sc2psUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2PowerSupply 1 }
+    ::= { sc2PowerSupplyEntry 1 }
 
 sc2psPowerSupplyNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Power supply (bay) number (index, 1..n)"
-    ::= { sc2PowerSupply 2 }
+    ::= { sc2PowerSupplyEntry 2 }
 
 sc2PowerSupplyDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Power supply designation (e.g. PS1)"
-    ::= { sc2PowerSupply 3 }
+    ::= { sc2PowerSupplyEntry 3 }
 
 sc2PowerSupplyIdentifier OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Power supply identification string (e.g. PS1)"
-    ::= { sc2PowerSupply 4 }
+    ::= { sc2PowerSupplyEntry 4 }
 
 sc2PowerSupplyStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2890,21 +2894,21 @@ sc2PowerSupplyStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Power supply status"
-    ::= { sc2PowerSupply 5 }
+    ::= { sc2PowerSupplyEntry 5 }
 
 sc2psPowerSupplyLoad OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Actual power supply output load in Watts (0 = not available)"
-    ::= { sc2PowerSupply 6 }
+    ::= { sc2PowerSupplyEntry 6 }
 
 sc2psPowerSupplyNominal OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Nominal power supply output load in Watts (0 = not available), the maximum value the power supply can provide"
-    ::= { sc2PowerSupply 7 }
+    ::= { sc2PowerSupplyEntry 7 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -2919,22 +2923,22 @@ sc2psPowerSupplyNominal OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2VoltageTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2Voltages
+    SYNTAX       SEQUENCE OF Sc2VoltageEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Voltages - all voltage values are in 1/100th Volts;
                   a value of 330 means 3.30 Volts (0xffffffff = unknown)"
     ::= { sc2Hardware 3 }
 
-sc2Voltages OBJECT-TYPE
-    SYNTAX       Sc2Voltages
+sc2VoltageEntry OBJECT-TYPE
+    SYNTAX       Sc2VoltageEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2voUnitId, sc2voSensorNr }
     ::= { sc2VoltageTable 1 }
 
-Sc2Voltages ::= SEQUENCE
+Sc2VoltageEntry ::= SEQUENCE
 {
     sc2voUnitId
         INTEGER,
@@ -2961,21 +2965,21 @@ sc2voUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2Voltages 1 }
+    ::= { sc2VoltageEntry 1 }
 
 sc2voSensorNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Voltage sensor number (index, 1..n)"
-    ::= { sc2Voltages 2 }
+    ::= { sc2VoltageEntry 2 }
 
 sc2VoltageDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Voltage designation string (e.g. 12V, 3V3, ...)"
-    ::= { sc2Voltages 3 }
+    ::= { sc2VoltageEntry 3 }
 
 sc2VoltageStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -2997,7 +3001,7 @@ sc2VoltageStatus OBJECT-TYPE
                     too-high(5):      voltage value is above upper limit
                     out-of-range(6):  voltage value is out of normal range (cannot detect whether too low or too high)
                     warning(7):       voltage warning (e.g. battery failure predicted)"
-    ::= { sc2Voltages 4 }
+    ::= { sc2VoltageEntry 4 }
 
 sc2VoltageCurrentValue OBJECT-TYPE
     SYNTAX       Gauge
@@ -3005,28 +3009,28 @@ sc2VoltageCurrentValue OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Voltage current value (in mV; 0xFFFFFFFF = unknown; negative voltages
                     are reported as negative values: -1770 (0xFFFFF916) means -1.77 Volts)"
-    ::= { sc2Voltages 5 }
+    ::= { sc2VoltageEntry 5 }
 
 sc2VoltageNominalValue OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Voltage nominal value (in mV; -1 = unknown; negative voltages are reported as negative values)"
-    ::= { sc2Voltages 6 }
+    ::= { sc2VoltageEntry 6 }
 
 sc2VoltageMinimumLevel OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Voltage minimum level (in mV; -1 = unknown; negative voltages are reported as negative values)"
-    ::= { sc2Voltages 7 }
+    ::= { sc2VoltageEntry 7 }
 
 sc2VoltageMaximumLevel OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Voltage maximum level (in mV; -1 = unknown; negative voltages are reported as negative values)"
-    ::= { sc2Voltages 8 }
+    ::= { sc2VoltageEntry 8 }
 
 sc2VoltageCurrentLoad OBJECT-TYPE
     SYNTAX       Gauge
@@ -3034,7 +3038,7 @@ sc2VoltageCurrentLoad OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Current output load on this voltage line,
                   in percent of the maximum load (0xFFFFFFFF = unknown)"
-    ::= { sc2Voltages 9 }
+    ::= { sc2VoltageEntry 9 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -3048,21 +3052,21 @@ sc2VoltageCurrentLoad OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2CPUTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2CPUs
+    SYNTAX       SEQUENCE OF Sc2CPUEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "CPU description table"
     ::= { sc2Hardware 4 }
 
-sc2CPUs OBJECT-TYPE
-    SYNTAX       Sc2CPUs
+sc2CPUEntry OBJECT-TYPE
+    SYNTAX       Sc2CPUEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2cpuUnitId, sc2cpuNr }
     ::= { sc2CPUTable 1 }
 
-Sc2CPUs ::= SEQUENCE
+Sc2CPUEntry ::= SEQUENCE
 {
     sc2cpuUnitId
         INTEGER,
@@ -3115,21 +3119,21 @@ sc2cpuUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2CPUs 1 }
+    ::= { sc2CPUEntry 1 }
 
 sc2cpuNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU (socket) number (index, 1..n)"
-    ::= { sc2CPUs 2 }
+    ::= { sc2CPUEntry 2 }
 
 sc2cpuDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU designation (e.g. CPU-2)"
-    ::= { sc2CPUs 3 }
+    ::= { sc2CPUEntry 3 }
 
 sc2cpuStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3155,35 +3159,35 @@ sc2cpuStatus OBJECT-TYPE
                     missing-termination(7):  CPU socket needs a terminator module when not populated but the terminator is missing
                     prefailure-warning(8):   CPU has encountered too many correctable errors within a certain 
                                                time period and is predicted to fail in near future"
-    ::= { sc2CPUs 4 }
+    ::= { sc2CPUEntry 4 }
 
 sc2cpuModelName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU model name (e.g. Pentium Xeon)"
-    ::= { sc2CPUs 5 }
+    ::= { sc2CPUEntry 5 }
 
 sc2cpuManufacturer OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU manufacturer name (e.g. Intel)"
-    ::= { sc2CPUs 6 }
+    ::= { sc2CPUEntry 6 }
 
 sc2cpuStep OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU step / revision"
-    ::= { sc2CPUs 7 }
+    ::= { sc2CPUEntry 7 }
 
 sc2cpuCurrentSpeed OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU speed (frequency in MHz, -1 if unknown)"
-    ::= { sc2CPUs 8 }
+    ::= { sc2CPUEntry 8 }
 
 sc2cpuNumberLogicals OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3191,49 +3195,49 @@ sc2cpuNumberLogicals OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Number of (physically available) logical CPUs within one physical CPU (for hyper-threading and multi-core CPUs).
                   This is the sum of all cores and all logical CPUs of a hyper-threading CPU, -1 if unknown or not available."
-    ::= { sc2CPUs 9 }
+    ::= { sc2CPUEntry 9 }
 
 sc2cpuCacheL1Size OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Size of first level cache (in kBytes, 0 if unknown or not available)"
-    ::= { sc2CPUs 10 }
+    ::= { sc2CPUEntry 10 }
 
 sc2cpuCacheL2Size OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Size of second level cache (in kBytes, 0 if unknown or not available)"
-    ::= { sc2CPUs 11 }
+    ::= { sc2CPUEntry 11 }
 
 sc2cpuCacheL3Size OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Size of third level cache (in kBytes, 0 if unknown or not available)"
-    ::= { sc2CPUs 12 }
+    ::= { sc2CPUEntry 12 }
 
 sc2cpuNumberCores OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Number of (physically available) cores within one physical CPU (for multi-core CPUs, platform dependent), 0 if unknown or not available"
-    ::= { sc2CPUs 13 }
+    ::= { sc2CPUEntry 13 }
 
 sc2cpuFamily OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU family code. This enumerated value is specified by the DMTF SMBIOS specification (processor information, type 4)."
-    ::= { sc2CPUs 14 }
+    ::= { sc2CPUEntry 14 }
 
 sc2cpuEnabledCores OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Number of effectively enabled cores within one physical CPU (for multi-core CPUs; 0 if unknown)"
-    ::= { sc2CPUs 15 }
+    ::= { sc2CPUEntry 15 }
 
 sc2cpuMultithreadingEnabled OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3245,7 +3249,7 @@ sc2cpuMultithreadingEnabled OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Multithreading of CPU enabled"
-    ::= { sc2CPUs 16 }
+    ::= { sc2CPUEntry 16 }
 
 sc2cpuConfigurationStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3268,21 +3272,21 @@ sc2cpuConfigurationStatus OBJECT-TYPE
                     mirror(5):               CPU is mirrored (for future use)
                     notUsable(7):            CPU is currently not usable (due to configuration problems)
                     configurationError(8):   CPU misconfiguration"
-    ::= { sc2CPUs 17 }
+    ::= { sc2CPUEntry 17 }
 
 sc2cpuMCDRAMSize OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Size of the onboard MCDRAM (GByte; 0 if no MCDRAM is available)"
-    ::= { sc2CPUs 18 }
+    ::= { sc2CPUEntry 18 }
 
 sc2cpuMCDRAMSpeed OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Speed of the onboard MCDRAM (MT/s; 0 if no MCDRAM is available)"
-    ::= { sc2CPUs 19 }
+    ::= { sc2CPUEntry 19 }
 
 sc2cpuMCDRAMMode OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3290,7 +3294,7 @@ sc2cpuMCDRAMMode OBJECT-TYPE
         undefined(1),
         flat(2),
         cache(3),
-        hybrid(3)
+        hybrid(4)
     }
     ACCESS       read-only
     STATUS       mandatory
@@ -3298,15 +3302,15 @@ sc2cpuMCDRAMMode OBJECT-TYPE
                     undefined(1): Mode is not defined (no MCDRAM available)
                     flat(2):      MCDRAM is used as standalone memory exclusively or in addition to external RAM
                     cache(3):     MCDRAM is used as a cache for external RAM
-                    hybrid(3):    Part of MCDRAM is used as a cache, rest as standalone memory (see sc2cpuMCDRAMCacheSize)"
-    ::= { sc2CPUs 20 }
+                    hybrid(4):    Part of MCDRAM is used as a cache, rest as standalone memory (see sc2cpuMCDRAMCacheSize)"
+    ::= { sc2CPUEntry 20 }
 
 sc2cpuMCDRAMCacheSize OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Portion of the onboard MCDRAM used as a cache in hybrid mode (in percent; 0 if no MCDRAM is available or other mode than hybrid)"
-    ::= { sc2CPUs 21 }
+    ::= { sc2CPUEntry 21 }
 
 sc2cpuMCDRAMMemoryModel OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3327,7 +3331,7 @@ sc2cpuMCDRAMMemoryModel OBJECT-TYPE
                     subNumaCluster4(4): Sub NUMA Cluster - 4
                     hemisphere(5):      Hemisphere mode
                     quadrant(6):        Quadrant mode"
-    ::= { sc2CPUs 22 }
+    ::= { sc2CPUEntry 22 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -3341,21 +3345,21 @@ sc2cpuMCDRAMMemoryModel OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2MemoryModuleTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2MemoryModules
+    SYNTAX       SEQUENCE OF Sc2MemoryModuleEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Main memory module table"
     ::= { sc2Hardware 5 }
 
-sc2MemoryModules OBJECT-TYPE
-    SYNTAX       Sc2MemoryModules
+sc2MemoryModuleEntry OBJECT-TYPE
+    SYNTAX       Sc2MemoryModuleEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2memUnitId, sc2memModuleNr }
     ::= { sc2MemoryModuleTable 1 }
 
-Sc2MemoryModules ::= SEQUENCE
+Sc2MemoryModuleEntry ::= SEQUENCE
 {
     sc2memUnitId
         INTEGER,
@@ -3396,21 +3400,21 @@ sc2memUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2MemoryModules 1 }
+    ::= { sc2MemoryModuleEntry 1 }
 
 sc2memModuleNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module (socket) number (index, 1..n)"
-    ::= { sc2MemoryModules 2 }
+    ::= { sc2MemoryModuleEntry 2 }
 
 sc2memModuleDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module designation (e.g. DIMM-2)"
-    ::= { sc2MemoryModules 3 }
+    ::= { sc2MemoryModuleEntry 3 }
 
 sc2memModuleStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3439,7 +3443,7 @@ sc2memModuleStatus OBJECT-TYPE
                     prefailure-predicted(7): Module has encountered too many correctable errors within a certain 
                                                time period and is predicted to fail in near future
                     hidden(11):              Module socket is not available and should be hidden"
-    ::= { sc2MemoryModules 4 }
+    ::= { sc2MemoryModuleEntry 4 }
 
 sc2memModuleBank OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3447,14 +3451,14 @@ sc2memModuleBank OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Memory module bank number (-1 if unknown)
                   Due to the fact that modern mainboards do no longer have fixed banks, this value is OBSOLETE!"
-    ::= { sc2MemoryModules 5 }
+    ::= { sc2MemoryModuleEntry 5 }
 
 sc2memModuleCapacity OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module size (capacity in MBytes; -1 if unknown)"
-    ::= { sc2MemoryModules 6 }
+    ::= { sc2MemoryModuleEntry 6 }
 
 sc2memModuleStartAddress OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3462,35 +3466,35 @@ sc2memModuleStartAddress OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Memory module start address (in MBytes; -1 if unknown)
                   Due to the fact that modern mainboards do no longer show start addresses, this value is OBSOLETE!"
-    ::= { sc2MemoryModules 7 }
+    ::= { sc2MemoryModuleEntry 7 }
 
 sc2memModuleForm OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module form (SIMM, DIMM, ...)"
-    ::= { sc2MemoryModules 8 }
+    ::= { sc2MemoryModuleEntry 8 }
 
 sc2memModuleType OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module type (SDRAM, DDRAM, DDR2, DDR3, ...)"
-    ::= { sc2MemoryModules 9 }
+    ::= { sc2MemoryModuleEntry 9 }
 
 sc2memModuleCorrErrors OBJECT-TYPE
     SYNTAX       Counter
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Number of memory module correctable errors (-1 if unknown)"
-    ::= { sc2MemoryModules 10 }
+    ::= { sc2MemoryModuleEntry 10 }
 
 sc2memModuleUncorrErrors OBJECT-TYPE
     SYNTAX       Counter
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Number of memory module uncorrectable errors (-1 if unknown)"
-    ::= { sc2MemoryModules 11 }
+    ::= { sc2MemoryModuleEntry 11 }
 
 sc2memModuleApproved OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3502,7 +3506,7 @@ sc2memModuleApproved OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module approved for this machine"
-    ::= { sc2MemoryModules 12 }
+    ::= { sc2MemoryModuleEntry 12 }
 
 sc2memModuleConfiguration OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3529,28 +3533,28 @@ sc2memModuleConfiguration OBJECT-TYPE
                     notUsable(7):           Module is not usable in the actual configuration because of architectural restrictions
                     configurationError(8):  Module is not active due to memory misconfiguration
                   This object replaces the previous redundancy status values hot-spare and mirror in sc2memModuleStatus."
-    ::= { sc2MemoryModules 13 }
+    ::= { sc2MemoryModuleEntry 13 }
 
 sc2memModuleFrequency OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module actual front side bus frequency (in MHz; -1 if unknown). This value is based on the BIOS settings"
-    ::= { sc2MemoryModules 14 }
+    ::= { sc2MemoryModuleEntry 14 }
 
 sc2memModuleMaxFrequency OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module maximum front side bus frequency (in MHz; -1 if unknown). This value is based on memory module SPD data"
-    ::= { sc2MemoryModules 15 }
+    ::= { sc2MemoryModuleEntry 15 }
 
 sc2memModuleVoltInterface OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module interface voltage interface description"
-    ::= { sc2MemoryModules 16 }
+    ::= { sc2MemoryModuleEntry 16 }
 
 
 sc2cpuMultithreadEnable OBJECT-TYPE
@@ -3577,21 +3581,21 @@ sc2cpuMultithreadEnable OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2ComponentPowerConsumptionTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2ComponentPowerConsumption
+    SYNTAX       SEQUENCE OF Sc2ComponentPowerConsumptionEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table of component power consumption data"
     ::= { sc2Hardware 7 }
 
-sc2ComponentPowerConsumption OBJECT-TYPE
-    SYNTAX       Sc2ComponentPowerConsumption
+sc2ComponentPowerConsumptionEntry OBJECT-TYPE
+    SYNTAX       Sc2ComponentPowerConsumptionEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2cpcUnitId, sc2cpcComponentClass, sc2cpcComponentIndex }
     ::= { sc2ComponentPowerConsumptionTable 1 }
 
-Sc2ComponentPowerConsumption ::= SEQUENCE
+Sc2ComponentPowerConsumptionEntry ::= SEQUENCE
 {
     sc2cpcUnitId
         INTEGER,
@@ -3610,7 +3614,7 @@ sc2cpcUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2ComponentPowerConsumption 1 }
+    ::= { sc2ComponentPowerConsumptionEntry 1 }
 
 sc2cpcComponentClass OBJECT-TYPE
     SYNTAX       INTEGER
@@ -3633,28 +3637,28 @@ sc2cpcComponentClass OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component class enumeration (based on IPMI v1.0 entity ID)"
-    ::= { sc2ComponentPowerConsumption 2 }
+    ::= { sc2ComponentPowerConsumptionEntry 2 }
 
 sc2cpcComponentIndex OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component index within class (1..n)"
-    ::= { sc2ComponentPowerConsumption 3 }
+    ::= { sc2ComponentPowerConsumptionEntry 3 }
 
 sc2cpcDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component designation"
-    ::= { sc2ComponentPowerConsumption 4 }
+    ::= { sc2ComponentPowerConsumptionEntry 4 }
 
 sc2cpcCurrentValue OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Current component power consumption in Watts"
-    ::= { sc2ComponentPowerConsumption 5 }
+    ::= { sc2ComponentPowerConsumptionEntry 5 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -3668,21 +3672,21 @@ sc2cpcCurrentValue OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2TrustedPlatformModuleTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2TrustedPlatformModule
+    SYNTAX       SEQUENCE OF Sc2TrustedPlatformModuleEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Trusted Platform Module (TPM) status information (see corresponding TPM specification for detailed description of these states)"
     ::= { sc2Hardware 8 }
 
-sc2TrustedPlatformModule OBJECT-TYPE
-    SYNTAX       Sc2TrustedPlatformModule
+sc2TrustedPlatformModuleEntry OBJECT-TYPE
+    SYNTAX       Sc2TrustedPlatformModuleEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2tpmUnitId }
     ::= { sc2TrustedPlatformModuleTable 1 }
 
-Sc2TrustedPlatformModule ::= SEQUENCE
+Sc2TrustedPlatformModuleEntry ::= SEQUENCE
 {
     sc2tpmUnitId
         INTEGER,
@@ -3703,42 +3707,42 @@ sc2tpmUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2TrustedPlatformModule 1 }
+    ::= { sc2TrustedPlatformModuleEntry 1 }
 
 sc2tpmHardwareAvailable OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "TPM hardware is available ('unknown' if hardware availability cannot be detected; no interface found)"
-    ::= { sc2TrustedPlatformModule 2 }
+    ::= { sc2TrustedPlatformModuleEntry 2 }
 
 sc2tpmBiosEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "TPM hardware is enabled by BIOS ('unknown' if hardware is not available; a reboot is required to change this value)"
-    ::= { sc2TrustedPlatformModule 3 }
+    ::= { sc2TrustedPlatformModuleEntry 3 }
 
 sc2tpmEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "TPM is enabled (by software; cannot take ownership if disabled; 'unknown' if hardware is not available or disabled)"
-    ::= { sc2TrustedPlatformModule 4 }
+    ::= { sc2TrustedPlatformModuleEntry 4 }
 
 sc2tpmActivated OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "TPM is activated (by software; 'unknown' if hardware is not available or disabled)"
-    ::= { sc2TrustedPlatformModule 5 }
+    ::= { sc2TrustedPlatformModuleEntry 5 }
 
 sc2tpmOwnership OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "TPM ownership is established (valid endorsement key is existing; 'unknown' if hardware is not available or disabled)"
-    ::= { sc2TrustedPlatformModule 6 }
+    ::= { sc2TrustedPlatformModuleEntry 6 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -3753,22 +3757,22 @@ sc2tpmOwnership OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2PersistentMemoryModuleTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2PersistentMemoryModules
+    SYNTAX       SEQUENCE OF Sc2PersistentMemoryModuleEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Additional information about persistent (non-volatile) memory modules to extend the sc2MemoryModuleTable.
                   This table uses the index numbers of the previous sc2MemoryModuleTable, but only contains rows where a persistent DIMM module is detected."
     ::= { sc2Hardware 9 }
 
-sc2PersistentMemoryModules OBJECT-TYPE
-    SYNTAX       Sc2PersistentMemoryModules
+sc2PersistentMemoryModuleEntry OBJECT-TYPE
+    SYNTAX       Sc2PersistentMemoryModuleEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2memUnitId, sc2memModuleNr }
     ::= { sc2PersistentMemoryModuleTable 1 }
 
-Sc2PersistentMemoryModules ::= SEQUENCE
+Sc2PersistentMemoryModuleEntry ::= SEQUENCE
 {
     sc2nvmemMemoryModeEnabled
         TrueFalseUnknown,
@@ -3819,147 +3823,147 @@ sc2nvmemMemoryModeEnabled OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Volatime memory mode is enabled"
-    ::= { sc2PersistentMemoryModules 1 }
+    ::= { sc2PersistentMemoryModuleEntry 1 }
 
 sc2nvmemPersistentModeEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Persistent memory mode is enabled"
-    ::= { sc2PersistentMemoryModules 2 }
+    ::= { sc2PersistentMemoryModuleEntry 2 }
 
 sc2nvmemPackageSparingCapable OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Module is capable of providing spare memory"
-    ::= { sc2PersistentMemoryModules 3 }
+    ::= { sc2PersistentMemoryModuleEntry 3 }
 
 sc2nvmemEncryptionEnabled OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory encryption is enabled"
-    ::= { sc2PersistentMemoryModules 4 }
+    ::= { sc2PersistentMemoryModuleEntry 4 }
 
 sc2nvmemFirmwareRevision OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Firmware revision"
-    ::= { sc2PersistentMemoryModules 5 }
+    ::= { sc2PersistentMemoryModuleEntry 5 }
 
 sc2nvmemTotalSize OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Total size of memory module (in GBytes; including reserved spare space)"
-    ::= { sc2PersistentMemoryModules 6 }
+    ::= { sc2PersistentMemoryModuleEntry 6 }
 
 sc2nvmemRawCapacity OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Maximum capacity that can be allocated for use in any of the supported modes (in GBytes; excluding reserved space)"
-    ::= { sc2PersistentMemoryModules 7 }
+    ::= { sc2PersistentMemoryModuleEntry 7 }
 
 sc2nvmemVolatileCapacity OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Capacity of volatile memory (in GBytes)"
-    ::= { sc2PersistentMemoryModules 8 }
+    ::= { sc2PersistentMemoryModuleEntry 8 }
 
 sc2nvmemPersistentCapacity OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Capacity of persistent memory (in GBytes)"
-    ::= { sc2PersistentMemoryModules 9 }
+    ::= { sc2PersistentMemoryModuleEntry 9 }
 
 sc2nvmemVolatilePercent OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Capacity of volatile memory (in percent of total size)"
-    ::= { sc2PersistentMemoryModules 10 }
+    ::= { sc2PersistentMemoryModuleEntry 10 }
 
 sc2nvmemPersistentPercent OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Capacity of persistent memory (in percent of total size)"
-    ::= { sc2PersistentMemoryModules 11 }
+    ::= { sc2PersistentMemoryModuleEntry 11 }
 
 sc2nvmemVolatileStart OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Start address of the volatile memory region"
-    ::= { sc2PersistentMemoryModules 12 }
+    ::= { sc2PersistentMemoryModuleEntry 12 }
 
 sc2nvmemPersistentStart OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Start address of the persistent memory region"
-    ::= { sc2PersistentMemoryModules 13 }
+    ::= { sc2PersistentMemoryModuleEntry 13 }
 
 sc2nvmemHealthStatusNonCritical OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Non-critical (warning) status"
-    ::= { sc2PersistentMemoryModules 14 }
+    ::= { sc2PersistentMemoryModuleEntry 14 }
 
 sc2nvmemHealthStatusCritical OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Critical status"
-    ::= { sc2PersistentMemoryModules 15 }
+    ::= { sc2PersistentMemoryModuleEntry 15 }
 
 sc2nvmemHealthStatusFatal OBJECT-TYPE
     SYNTAX       TrueFalseUnknown
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Fatal error status (data loss has occurred or is imminent)"
-    ::= { sc2PersistentMemoryModules 16 }
+    ::= { sc2PersistentMemoryModuleEntry 16 }
 
 sc2nvmemPowerOnTime OBJECT-TYPE
     SYNTAX       Counter
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Cumulated duration the DIMM has been powered on (in seconds; 0 = unknown)"
-    ::= { sc2PersistentMemoryModules 17 }
+    ::= { sc2PersistentMemoryModuleEntry 17 }
 
 sc2nvmemUpTime OBJECT-TYPE
     SYNTAX       Counter
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Current uptime of the DIMM for the current power cycle (in seconds; 0 = unknown)"
-    ::= { sc2PersistentMemoryModules 18 }
+    ::= { sc2PersistentMemoryModuleEntry 18 }
 
 sc2nvmemLiftetimeRemaining OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Predicted remaining lifetime (in percent; -1 = unknown)"
-    ::= { sc2PersistentMemoryModules 19 }
+    ::= { sc2PersistentMemoryModuleEntry 19 }
 
 sc2nvmemAveragePowerBudget OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Average Power Budget in mW"
-    ::= { sc2PersistentMemoryModules 20 }
+    ::= { sc2PersistentMemoryModuleEntry 20 }
 
 sc2nvmemPeakPowerBudget OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Peak Power Budget in mW"
-    ::= { sc2PersistentMemoryModules 21 }
+    ::= { sc2PersistentMemoryModuleEntry 21 }
 
 
 
@@ -3986,7 +3990,7 @@ sc2Recovery OBJECT IDENTIFIER		::= { fscServerControl2 7 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2MessageLogTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2MessageLogs
+    SYNTAX       SEQUENCE OF Sc2MessageLogEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Error and event message handling"
@@ -3994,7 +3998,7 @@ sc2MessageLogTable OBJECT-TYPE
 
 --
 -- Message data of the following message log entries. Valid for the MIB table
--- "sc2MessageLogs", object "sc2msgLogEntryData". The messages are encoded as binary
+-- "sc2MessageLogEntry", object "sc2msgLogEntryData". The messages are encoded as binary
 -- data with following format:
 --
 --  --------------------------------------------------------------------------------
@@ -4029,15 +4033,15 @@ sc2MessageLogTable OBJECT-TYPE
 --
 
 
-sc2MessageLogs OBJECT-TYPE
-    SYNTAX       Sc2MessageLogs
+sc2MessageLogEntry OBJECT-TYPE
+    SYNTAX       Sc2MessageLogEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2msgUnitId, sc2msgLogEntryNr }
     ::= { sc2MessageLogTable 1 }
 
-Sc2MessageLogs ::= SEQUENCE
+Sc2MessageLogEntry ::= SEQUENCE
 {
     sc2msgUnitId
         INTEGER,
@@ -4052,21 +4056,21 @@ sc2msgUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2MessageLogs 1 }
+    ::= { sc2MessageLogEntry 1 }
 
 sc2msgLogEntryNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message log entry number (index, 1..n)"
-    ::= { sc2MessageLogs 2 }
+    ::= { sc2MessageLogEntry 2 }
 
 sc2msgLogEntryData OBJECT-TYPE
     SYNTAX       OCTET STRING
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message log entry data (binary; one message per table entry)"
-    ::= { sc2MessageLogs 3 }
+    ::= { sc2MessageLogEntry 3 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -4080,21 +4084,21 @@ sc2msgLogEntryData OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2WatchdogTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2Watchdogs
+    SYNTAX       SEQUENCE OF Sc2WatchdogEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Watchdogs"
     ::= { sc2Recovery 2 }
 
-sc2Watchdogs OBJECT-TYPE
-    SYNTAX       Sc2Watchdogs
+sc2WatchdogEntry OBJECT-TYPE
+    SYNTAX       Sc2WatchdogEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2wdUnitId, sc2WatchdogType }
     ::= { sc2WatchdogTable 1 }
 
-Sc2Watchdogs ::= SEQUENCE
+Sc2WatchdogEntry ::= SEQUENCE
 {
     sc2wdUnitId
         INTEGER,
@@ -4113,7 +4117,7 @@ sc2wdUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2Watchdogs 1 }
+    ::= { sc2WatchdogEntry 1 }
 
 sc2WatchdogType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4130,7 +4134,7 @@ sc2WatchdogType OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Watchdog type"
-    ::= { sc2Watchdogs 2 }
+    ::= { sc2WatchdogEntry 2 }
 
 sc2WatchdogStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4143,14 +4147,14 @@ sc2WatchdogStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Watchdog status"
-    ::= { sc2Watchdogs 3 }
+    ::= { sc2WatchdogEntry 3 }
 
 sc2WatchdogTime OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Watchdog timeout period in seconds (-1 = unknown)"
-    ::= { sc2Watchdogs 4 }
+    ::= { sc2WatchdogEntry 4 }
 
 sc2WatchdogAction OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4165,7 +4169,7 @@ sc2WatchdogAction OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Watchdog timeout action; the value unknown(1) can't be written.
                   Not all watchdog type allow setting all of the values (-> BADVALUE)."
-    ::= { sc2Watchdogs 5 }
+    ::= { sc2WatchdogEntry 5 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -4179,21 +4183,21 @@ sc2WatchdogAction OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2RecoverySettingTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2RecoverySettings
+    SYNTAX       SEQUENCE OF Sc2RecoverySettingEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "ASR&R (Automatic server recovery and restart) settings"
     ::= { sc2Recovery 3 }
 
-sc2RecoverySettings OBJECT-TYPE
-    SYNTAX       Sc2RecoverySettings
+sc2RecoverySettingEntry OBJECT-TYPE
+    SYNTAX       Sc2RecoverySettingEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2asrUnitId }
     ::= { sc2RecoverySettingTable 1 }
 
-Sc2RecoverySettings ::= SEQUENCE
+Sc2RecoverySettingEntry ::= SEQUENCE
 {
     sc2asrUnitId
         INTEGER,
@@ -4216,7 +4220,7 @@ sc2asrUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2RecoverySettings 1 }
+    ::= { sc2RecoverySettingEntry 1 }
 
 sc2asrNrRebootRetries OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4226,7 +4230,7 @@ sc2asrNrRebootRetries OBJECT-TYPE
                   (and power-off) had occured. After this number of retries the action
                   defined in 'sc2asrRebootFailAction' will be executed
                   (-1 = unknown, no retries)."
-    ::= { sc2RecoverySettings 2 }
+    ::= { sc2RecoverySettingEntry 2 }
 
 sc2asrDefaultRebootRetries OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4235,7 +4239,7 @@ sc2asrDefaultRebootRetries OBJECT-TYPE
     DESCRIPTION  "Default number of retries for server failure reboot. The above
                   object 'sc2asrNrRebootRetries' will be set to this value after the server
                   is working properly for a certain amount of time."
-    ::= { sc2RecoverySettings 3 }
+    ::= { sc2RecoverySettingEntry 3 }
 
 sc2asrNextBootSource OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4253,7 +4257,7 @@ sc2asrNextBootSource OBJECT-TYPE
                      diag-system:      boot from alternate diagnostic system (only for SCSI systems,
                                        load diagnostic system from alternate IDE disk).
                      remote-disk:      boot from remote network disk"
-    ::= { sc2RecoverySettings 4 }
+    ::= { sc2RecoverySettingEntry 4 }
 
 sc2asrRebootFailAction OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4274,7 +4278,7 @@ sc2asrRebootFailAction OBJECT-TYPE
     DESCRIPTION  "Specifies the action after a specified number of failed reboot retries 
                   (the object 'sc2asrNrRebootRetries' has reached zero). The value
                   no-diag-system(4) means that a diagnostics system is not available."
-    ::= { sc2RecoverySettings 5 }
+    ::= { sc2RecoverySettingEntry 5 }
 
 sc2asrRestartDelay OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4285,7 +4289,7 @@ sc2asrRestartDelay OBJECT-TYPE
                   Setting this value to zero means immediate restart (power-cycle only).
                   Automatic restart may be disabled by setting the 'sc2asrRebootFailAction'
                   to 'switch-off' and the 'sc2asrDefaultRebootRetries' to zero."
-    ::= { sc2RecoverySettings 6 }
+    ::= { sc2RecoverySettingEntry 6 }
 
 sc2asrPostErrorHalt OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4298,7 +4302,7 @@ sc2asrPostErrorHalt OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Describes what to do when a POST error has occured (halt on any error, no halt on any error...)."
-    ::= { sc2RecoverySettings 7 }
+    ::= { sc2RecoverySettingEntry 7 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -4312,7 +4316,7 @@ sc2asrPostErrorHalt OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2MessageTextLogTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2MessageTextLogs
+    SYNTAX       SEQUENCE OF Sc2MessageTextLogEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Error and event message handling, reported as text strings"
@@ -4328,18 +4332,18 @@ sc2MessageTextLogTable OBJECT-TYPE
 --   language to be reported. See object "sc2MsgLogLanguages" in "sc2UnitTable"
 --   for the available languages.
 -- Each MIB table entry can contain only one message entry!
--- The table entries may not correspond to the entries in the preceding "sc2MessageLogs" table!
+-- The table entries may not correspond to the entries in the preceding "sc2MessageLogEntry" table!
 --
 
-sc2MessageTextLogs OBJECT-TYPE
-    SYNTAX       Sc2MessageTextLogs
+sc2MessageTextLogEntry OBJECT-TYPE
+    SYNTAX       Sc2MessageTextLogEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2msgTextLogUnitId, sc2msgTextLogLanguage, sc2msgTextLogSeqNr }
     ::= { sc2MessageTextLogTable 1 }
 
-Sc2MessageTextLogs ::= SEQUENCE
+Sc2MessageTextLogEntry ::= SEQUENCE
 {
     sc2msgTextLogUnitId
         INTEGER,
@@ -4364,7 +4368,7 @@ sc2msgTextLogUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2MessageTextLogs 1 }
+    ::= { sc2MessageTextLogEntry 1 }
 
 sc2msgTextLogLanguage OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4372,21 +4376,21 @@ sc2msgTextLogLanguage OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Message log entry language (index, Windows language code)
                   e.g. 1031, 1033 for German, English (default; always available)"
-    ::= { sc2MessageTextLogs 2 }
+    ::= { sc2MessageTextLogEntry 2 }
 
 sc2msgTextLogSeqNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message log entry sequence number (index, 1..n)"
-    ::= { sc2MessageTextLogs 3 }
+    ::= { sc2MessageTextLogEntry 3 }
 
 sc2msgTextLogTimestamp OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message log entry time stamp (time_t = seconds since 1/1/1970, 0:00 AM as GMT)"
-    ::= { sc2MessageTextLogs 4 }
+    ::= { sc2MessageTextLogEntry 4 }
 
 sc2msgTextLogMessage OBJECT-TYPE
     SYNTAX       DisplayString
@@ -4394,14 +4398,14 @@ sc2msgTextLogMessage OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Message log entry message string (multi-byte string; multi-language; not
                   every language may be implemented)"
-    ::= { sc2MessageTextLogs 5 }
+    ::= { sc2MessageTextLogEntry 5 }
 
 sc2msgTextLogErrorCode OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message log entry error code"
-    ::= { sc2MessageTextLogs 6 }
+    ::= { sc2MessageTextLogEntry 6 }
 
 sc2msgTextLogSeverity OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4414,14 +4418,14 @@ sc2msgTextLogSeverity OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message log entry severity"
-    ::= { sc2MessageTextLogs 7 }
+    ::= { sc2MessageTextLogEntry 7 }
 
 sc2msgTextLogCSSComponent OBJECT-TYPE
     SYNTAX       TrueFalse
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component which caused the log message may be replaced by the customer (CSS=Customer Self Service)"
-    ::= { sc2MessageTextLogs 8 }
+    ::= { sc2MessageTextLogEntry 8 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -4435,21 +4439,21 @@ sc2msgTextLogCSSComponent OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2MessageLogActionHintTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2MessageLogActionHints
+    SYNTAX       SEQUENCE OF Sc2MessageLogActionHintEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Action text strings for error and event messages"
     ::= { sc2Recovery 5 }
 
-sc2MessageLogActionHints OBJECT-TYPE
-    SYNTAX       Sc2MessageLogActionHints
+sc2MessageLogActionHintEntry OBJECT-TYPE
+    SYNTAX       Sc2MessageLogActionHintEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2mlaLanguage, sc2mlaErrorCode, sc2mlaType, sc2mlaIndex }
     ::= { sc2MessageLogActionHintTable 1 }
 
-Sc2MessageLogActionHints ::= SEQUENCE
+Sc2MessageLogActionHintEntry ::= SEQUENCE
 {
     sc2mlaLanguage
         INTEGER,
@@ -4469,14 +4473,14 @@ sc2mlaLanguage OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Action text language (index, Windows language code)
                   e.g. 1031, 1033 for German, English"
-    ::= { sc2MessageLogActionHints 1 }
+    ::= { sc2MessageLogActionHintEntry 1 }
 
 sc2mlaErrorCode OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Action text error code (index)"
-    ::= { sc2MessageLogActionHints 2 }
+    ::= { sc2MessageLogActionHintEntry 2 }
 
 sc2mlaType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4488,21 +4492,21 @@ sc2mlaType OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message log entry severity"
-    ::= { sc2MessageLogActionHints 3 }
+    ::= { sc2MessageLogActionHintEntry 3 }
 
 sc2mlaIndex OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Action text entry string index (index, 1..n)"
-    ::= { sc2MessageLogActionHints 4 }
+    ::= { sc2MessageLogActionHintEntry 4 }
 
 sc2mlaMessage OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Action message string"
-    ::= { sc2MessageLogActionHints 5 }
+    ::= { sc2MessageLogActionHintEntry 5 }
 
 
 
@@ -4542,22 +4546,22 @@ sc2AgentStatus OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2StatusComponentTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2StatusComponents
+    SYNTAX       SEQUENCE OF Sc2StatusComponentsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table with status values of the components in this agent. The table
                   summarizes all instances of one component to one status value."
     ::= { sc2Status 2 }
 
-sc2StatusComponents OBJECT-TYPE
-    SYNTAX       Sc2StatusComponents
+sc2StatusComponentsEntry OBJECT-TYPE
+    SYNTAX       Sc2StatusComponentsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2csUnitId }
     ::= { sc2StatusComponentTable 1 }
 
-Sc2StatusComponents ::= SEQUENCE
+Sc2StatusComponentsEntry ::= SEQUENCE
 {
     sc2csUnitId
         INTEGER,
@@ -4584,63 +4588,63 @@ sc2csUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2StatusComponents 1 }
+    ::= { sc2StatusComponentsEntry 1 }
 
 sc2csStatusOverall OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Overall status (worst status of all components) in this unit"
-    ::= { sc2StatusComponents 2 }
+    ::= { sc2StatusComponentsEntry 2 }
 
 sc2csStatusBoot OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Boot status (errors from power-on selftest and boot)"
-    ::= { sc2StatusComponents 3 }
+    ::= { sc2StatusComponentsEntry 3 }
 
 sc2csStatusPowerSupply OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Power supply status"
-    ::= { sc2StatusComponents 4 }
+    ::= { sc2StatusComponentsEntry 4 }
 
 sc2csStatusTemperature OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Temperature status"
-    ::= { sc2StatusComponents 5 }
+    ::= { sc2StatusComponentsEntry 5 }
 
 sc2csStatusFans OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Fan status"
-    ::= { sc2StatusComponents 6 }
+    ::= { sc2StatusComponentsEntry 6 }
 
 sc2csStatusVoltages OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Voltage status"
-    ::= { sc2StatusComponents 7 }
+    ::= { sc2StatusComponentsEntry 7 }
 
 sc2csStatusCpu OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "CPU status"
-    ::= { sc2StatusComponents 8 }
+    ::= { sc2StatusComponentsEntry 8 }
 
 sc2csStatusMemoryModule OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Memory module status"
-    ::= { sc2StatusComponents 9 }
+    ::= { sc2StatusComponentsEntry 9 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -4655,22 +4659,22 @@ sc2csStatusMemoryModule OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2ComponentStatusSensorTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2ComponentStatusSensors
+    SYNTAX       SEQUENCE OF Sc2ComponentStatusSensorsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "This table contains the component status sensor table of the BMC (baseboard management
                   controller). Additionally it also holds the CSS (Customer Self Service) information."
     ::= { sc2Status 3 }
 
-sc2ComponentStatusSensors OBJECT-TYPE
-    SYNTAX       Sc2ComponentStatusSensors
+sc2ComponentStatusSensorsEntry OBJECT-TYPE
+    SYNTAX       Sc2ComponentStatusSensorsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2cssUnitId, sc2cssSensorNumber }
     ::= { sc2ComponentStatusSensorTable 1 }
 
-Sc2ComponentStatusSensors ::= SEQUENCE
+Sc2ComponentStatusSensorsEntry ::= SEQUENCE
 {
     sc2cssUnitId
         INTEGER,
@@ -4697,49 +4701,49 @@ sc2cssUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2ComponentStatusSensors 1 }
+    ::= { sc2ComponentStatusSensorsEntry 1 }
 
 sc2cssSensorNumber OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "BMC component status sensor number (index, 1..n)"
-    ::= { sc2ComponentStatusSensors 2 }
+    ::= { sc2ComponentStatusSensorsEntry 2 }
 
 sc2cssSensorDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component status sensor designation string"
-    ::= { sc2ComponentStatusSensors 3 }
+    ::= { sc2ComponentStatusSensorsEntry 3 }
 
 sc2cssSensorDevice OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Name of device (entity) the component status sensor belongs to"
-    ::= { sc2ComponentStatusSensors 4 }
+    ::= { sc2ComponentStatusSensorsEntry 4 }
 
 sc2cssSensorDeviceInstance OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Instance number of device (entity) the component status sensor belongs to"
-    ::= { sc2ComponentStatusSensors 5 }
+    ::= { sc2ComponentStatusSensorsEntry 5 }
 
 sc2cssSensorPhysicalLed OBJECT-TYPE
     SYNTAX       TrueFalse
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "If set, component has a physical status LED showing the sensor status"
-    ::= { sc2ComponentStatusSensors 6 }
+    ::= { sc2ComponentStatusSensorsEntry 6 }
 
 sc2cssSensorCssComponent OBJECT-TYPE
     SYNTAX       TrueFalse
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "If set, component may be replaced by the customer (CSS 'custormer-self-service' component)"
-    ::= { sc2ComponentStatusSensors 7 }
+    ::= { sc2ComponentStatusSensorsEntry 7 }
 
 sc2cssSensorStatus OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4754,7 +4758,7 @@ sc2cssSensorStatus OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status returned by the component status sensor"
-    ::= { sc2ComponentStatusSensors 8 }
+    ::= { sc2ComponentStatusSensorsEntry 8 }
 
 sc2cssComponentServicePartId OBJECT-TYPE
     SYNTAX       DisplayString
@@ -4763,7 +4767,7 @@ sc2cssComponentServicePartId OBJECT-TYPE
     DESCRIPTION  "Spare part number of the replaceable component; used to create a link
                   to the spare part list on the service's spare part catalogue.
                   This usually is the component's designation string, with blanks substituted by underscores."
-    ::= { sc2ComponentStatusSensors 9 }
+    ::= { sc2ComponentStatusSensorsEntry 9 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -4798,21 +4802,21 @@ sc2Maintenance OBJECT IDENTIFIER		::= { fscServerControl2 9 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2MaintenanceObjectTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2MaintenanceObjects
+    SYNTAX       SEQUENCE OF Sc2MaintenanceObjectEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table containing some other maintenance objects"
     ::= { sc2Maintenance 1 }
 
-sc2MaintenanceObjects OBJECT-TYPE
-    SYNTAX       Sc2MaintenanceObjects
+sc2MaintenanceObjectEntry OBJECT-TYPE
+    SYNTAX       Sc2MaintenanceObjectEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2mtUnitId }
     ::= { sc2MaintenanceObjectTable 1 }
 
-Sc2MaintenanceObjects ::= SEQUENCE
+Sc2MaintenanceObjectEntry ::= SEQUENCE
 {
     sc2mtUnitId
         INTEGER,
@@ -4829,7 +4833,7 @@ sc2mtUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2MaintenanceObjects 1 }
+    ::= { sc2MaintenanceObjectEntry 1 }
 
 sc2ErrorCounterStartTime OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4837,7 +4841,7 @@ sc2ErrorCounterStartTime OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Memory module error counter start time (seconds since 1/1/1970, -1 if unknown).
                   This is the time when the error counters were started or reset last time."
-    ::= { sc2MaintenanceObjects 2 }
+    ::= { sc2MaintenanceObjectEntry 2 }
 
 sc2SendTestTrap OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4847,7 +4851,7 @@ sc2SendTestTrap OBJECT-TYPE
                   configuration; trap cannot be disabled.
                   Initiate test trap sending by writing a non-zero value.
                   Reading this object just returns the value 0."
-    ::= { sc2MaintenanceObjects 3 }
+    ::= { sc2MaintenanceObjectEntry 3 }
 
 sc2AddTrapDestination OBJECT-TYPE
     SYNTAX       IpAddress
@@ -4856,7 +4860,7 @@ sc2AddTrapDestination OBJECT-TYPE
     DESCRIPTION  "Add the specified IP address (of the management station) to
                   the trap destination list of this server. That client will become an alarm 
                   receiver for traps of this server."
-    ::= { sc2MaintenanceObjects 4 }
+    ::= { sc2MaintenanceObjectEntry 4 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -4870,21 +4874,21 @@ sc2AddTrapDestination OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2FirmwareVersionTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2FirmwareVersions
+    SYNTAX       SEQUENCE OF Sc2FirmwareVersionsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Controller firmware version table"
     ::= { sc2Maintenance 2 }
 
-sc2FirmwareVersions OBJECT-TYPE
-    SYNTAX       Sc2FirmwareVersions
+sc2FirmwareVersionsEntry OBJECT-TYPE
+    SYNTAX       Sc2FirmwareVersionsEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2fwUnitId, sc2fwType }
     ::= { sc2FirmwareVersionTable 1 }
 
-Sc2FirmwareVersions ::= SEQUENCE
+Sc2FirmwareVersionsEntry ::= SEQUENCE
 {
     sc2fwUnitId
         INTEGER,
@@ -4901,7 +4905,7 @@ sc2fwUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2FirmwareVersions 1 }
+    ::= { sc2FirmwareVersionsEntry 1 }
 
 sc2fwType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -4913,21 +4917,21 @@ sc2fwType OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Controller/firmware type"
-    ::= { sc2FirmwareVersions 2 }
+    ::= { sc2FirmwareVersionsEntry 2 }
 
 sc2fwModelName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Controller/firmware model name (e.g. 'Copernicus'...)"
-    ::= { sc2FirmwareVersions 3 }
+    ::= { sc2FirmwareVersionsEntry 3 }
 
 sc2fwVersion OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Controller/firmware version string (e.g. '3.81.02')"
-    ::= { sc2FirmwareVersions 4 }
+    ::= { sc2FirmwareVersionsEntry 4 }
 
 
 
@@ -4955,7 +4959,7 @@ sc2Deployment OBJECT IDENTIFIER		::= { fscServerControl2 10 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2DeployInfoTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2DeployInfo
+    SYNTAX       SEQUENCE OF Sc2DeployInfoEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table with data of deployment information.
@@ -4963,15 +4967,15 @@ sc2DeployInfoTable OBJECT-TYPE
                   This table is OBSOLETE (no longer used for new implementations)!"
     ::= { sc2Deployment 1 }
 
-sc2DeployInfo OBJECT-TYPE
-    SYNTAX       Sc2DeployInfo
+sc2DeployInfoEntry OBJECT-TYPE
+    SYNTAX       Sc2DeployInfoEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2dplInfoUnitId }
     ::= { sc2DeployInfoTable 1 }
 
-Sc2DeployInfo ::= SEQUENCE
+Sc2DeployInfoEntry ::= SEQUENCE
 {
     sc2dplInfoUnitId
         INTEGER,
@@ -5030,133 +5034,133 @@ sc2dplInfoUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2DeployInfo 1 }
+    ::= { sc2DeployInfoEntry 1 }
 
 sc2DeployInfoChassisId OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Chassis serial number"
-    ::= { sc2DeployInfo 2 }
+    ::= { sc2DeployInfoEntry 2 }
 
 sc2DeployInfoMacAddr1 OBJECT-TYPE
     SYNTAX       PhysAddress
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "MAC address 1"
-    ::= { sc2DeployInfo 3 }
+    ::= { sc2DeployInfoEntry 3 }
 
 sc2DeployInfoMacAddr2 OBJECT-TYPE
     SYNTAX       PhysAddress
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "MAC address 2"
-    ::= { sc2DeployInfo 4 }
+    ::= { sc2DeployInfoEntry 4 }
 
 sc2DeployInfoMacAddr3 OBJECT-TYPE
     SYNTAX       PhysAddress
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "MAC address 3"
-    ::= { sc2DeployInfo 5 }
+    ::= { sc2DeployInfoEntry 5 }
 
 sc2DeployInfoMacAddr4 OBJECT-TYPE
     SYNTAX       PhysAddress
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "MAC address 4"
-    ::= { sc2DeployInfo 6 }
+    ::= { sc2DeployInfoEntry 6 }
 
 sc2DeployInfoIpAddr1 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP address 1"
-    ::= { sc2DeployInfo 7 }
+    ::= { sc2DeployInfoEntry 7 }
 
 sc2DeployInfoIpAddr2 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP address 2"
-    ::= { sc2DeployInfo 8 }
+    ::= { sc2DeployInfoEntry 8 }
 
 sc2DeployInfoIpAddr3 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP address 3"
-    ::= { sc2DeployInfo 9 }
+    ::= { sc2DeployInfoEntry 9 }
 
 sc2DeployInfoIpAddr4 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP address 4"
-    ::= { sc2DeployInfo 10 }
+    ::= { sc2DeployInfoEntry 10 }
 
 sc2DeployInfoNetMask1 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP subnet mask 1"
-    ::= { sc2DeployInfo 11 }
+    ::= { sc2DeployInfoEntry 11 }
 
 sc2DeployInfoNetMask2 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP subnet mask 2"
-    ::= { sc2DeployInfo 12 }
+    ::= { sc2DeployInfoEntry 12 }
 
 sc2DeployInfoNetMask3 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP subnet mask 3"
-    ::= { sc2DeployInfo 13 }
+    ::= { sc2DeployInfoEntry 13 }
 
 sc2DeployInfoNetMask4 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP subnet mask 4"
-    ::= { sc2DeployInfo 14 }
+    ::= { sc2DeployInfoEntry 14 }
 
 sc2DeployInfoGateway1 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP gateway 1"
-    ::= { sc2DeployInfo 15 }
+    ::= { sc2DeployInfoEntry 15 }
 
 sc2DeployInfoGateway2 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP gateway 2"
-    ::= { sc2DeployInfo 16 }
+    ::= { sc2DeployInfoEntry 16 }
 
 sc2DeployInfoGateway3 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP gateway 3"
-    ::= { sc2DeployInfo 17 }
+    ::= { sc2DeployInfoEntry 17 }
 
 sc2DeployInfoGateway4 OBJECT-TYPE
     SYNTAX       IpAddress
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "IP gateway 4"
-    ::= { sc2DeployInfo 18 }
+    ::= { sc2DeployInfoEntry 18 }
 
 sc2DeployInfoHostname OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "Host name"
-    ::= { sc2DeployInfo 19 }
+    ::= { sc2DeployInfoEntry 19 }
 
 sc2DeployInfoMasterImageReference OBJECT-TYPE
     SYNTAX       DisplayString
@@ -5164,7 +5168,7 @@ sc2DeployInfoMasterImageReference OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "URL in UNC notification (but in ASCII) to remote image file
                   (with the extensions of *.img, *.cfg, *.txt)"
-    ::= { sc2DeployInfo 20 }
+    ::= { sc2DeployInfoEntry 20 }
 
 sc2DeployInfoStatusOfBlade OBJECT-TYPE
     SYNTAX       INTEGER
@@ -5184,7 +5188,7 @@ sc2DeployInfoStatusOfBlade OBJECT-TYPE
                    system-boot-failure(4): system boot failure
                    bios-setup(5):          BIOS setup or boot phase
                    booting(6):             ACPI OS currently booting"
-    ::= { sc2DeployInfo 21 }
+    ::= { sc2DeployInfoEntry 21 }
 
 sc2DeployInfoLanStatusOfSlot OBJECT-TYPE
     SYNTAX       INTEGER
@@ -5196,7 +5200,7 @@ sc2DeployInfoLanStatusOfSlot OBJECT-TYPE
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "Defines wether the IP-LAN definitions are valid or not."
-    ::= { sc2DeployInfo 22 }
+    ::= { sc2DeployInfoEntry 22 }
 
 sc2DeployInfoAutomaticRecovery OBJECT-TYPE
     SYNTAX       INTEGER
@@ -5208,7 +5212,7 @@ sc2DeployInfoAutomaticRecovery OBJECT-TYPE
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "Defines if this server blade should be provided automatic recovery."
-    ::= { sc2DeployInfo 23 }
+    ::= { sc2DeployInfoEntry 23 }
 
 sc2DeployInfoStatusOfCloning OBJECT-TYPE
     SYNTAX       INTEGER
@@ -5221,7 +5225,7 @@ sc2DeployInfoStatusOfCloning OBJECT-TYPE
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "Status of current cloning process."
-    ::= { sc2DeployInfo 24 }
+    ::= { sc2DeployInfoEntry 24 }
 
 sc2DeployInfoBootMode OBJECT-TYPE
     SYNTAX       INTEGER
@@ -5240,7 +5244,7 @@ sc2DeployInfoBootMode OBJECT-TYPE
                     normal(2):       boot from standard disk subsystem
                     pxeBiosSetup(3): boot from PXE according to BIOS setup settings (for OEM systems)
                     pxeLanx(y):      boot from PXE LAN interface x (0..3)"
-    ::= { sc2DeployInfo 25 }
+    ::= { sc2DeployInfoEntry 25 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -5256,7 +5260,7 @@ sc2DeployInfoBootMode OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2OemDeployInfoTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2OemDeployInfo
+    SYNTAX       SEQUENCE OF Sc2OemDeployInfoEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table with data of server OEM information.
@@ -5264,15 +5268,15 @@ sc2OemDeployInfoTable OBJECT-TYPE
                   This table is OBSOLETE (no longer used for new implementations)!"
     ::= { sc2Deployment 2 }
 
-sc2OemDeployInfo OBJECT-TYPE
-    SYNTAX       Sc2OemDeployInfo
+sc2OemDeployInfoEntry OBJECT-TYPE
+    SYNTAX       Sc2OemDeployInfoEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2odplInfoUnitId, sc2odplParamId }
     ::= { sc2OemDeployInfoTable 1 }
 
-Sc2OemDeployInfo ::= SEQUENCE
+Sc2OemDeployInfoEntry ::= SEQUENCE
 {
     sc2odplInfoUnitId
         INTEGER,
@@ -5287,21 +5291,21 @@ sc2odplInfoUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2OemDeployInfo 1 }
+    ::= { sc2OemDeployInfoEntry 1 }
 
 sc2odplParamId OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "OEM parameter ID (index, 1..10)"
-    ::= { sc2OemDeployInfo 2 }
+    ::= { sc2OemDeployInfoEntry 2 }
 
 sc2OemDeployInfoParamData OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "OEM parameter data"
-    ::= { sc2OemDeployInfo 3 }
+    ::= { sc2OemDeployInfoEntry 3 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -5318,7 +5322,7 @@ sc2OemDeployInfoParamData OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2DeployLanInterfaceTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2DeployLanInterfaces
+    SYNTAX       SEQUENCE OF Sc2DeployLanInterfaceEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table with system LAN interfaces information:
@@ -5327,15 +5331,15 @@ sc2DeployLanInterfaceTable OBJECT-TYPE
                   Only on-board interfaces are listed; no virtual interfaces."
     ::= { sc2Deployment 3 }
 
-sc2DeployLanInterfaces OBJECT-TYPE
-    SYNTAX       Sc2DeployLanInterfaces
+sc2DeployLanInterfaceEntry OBJECT-TYPE
+    SYNTAX       Sc2DeployLanInterfaceEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2dplLanUnitId, sc2dplLanInterfaceNr }
     ::= { sc2DeployLanInterfaceTable 1 }
 
-Sc2DeployLanInterfaces ::= SEQUENCE
+Sc2DeployLanInterfaceEntry ::= SEQUENCE
 {
     sc2dplLanUnitId
         INTEGER,
@@ -5350,21 +5354,21 @@ sc2dplLanUnitId OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Unit identifier (index, 1..n)"
-    ::= { sc2DeployLanInterfaces 1 }
+    ::= { sc2DeployLanInterfaceEntry 1 }
 
 sc2dplLanInterfaceNr OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "LAN interface number (index, 1..n)"
-    ::= { sc2DeployLanInterfaces 2 }
+    ::= { sc2DeployLanInterfaceEntry 2 }
 
 sc2dplLanMacAddress OBJECT-TYPE
     SYNTAX       PhysAddress
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "LAN interface hardware (MAC) address"
-    ::= { sc2DeployLanInterfaces 3 }
+    ::= { sc2DeployLanInterfaceEntry 3 }
 
 
 
@@ -5392,22 +5396,22 @@ sc2DriverMonitoring OBJECT IDENTIFIER		::= { fscServerControl2 11 }
 -- ----------------------------------------------------------------------------------------------
 
 sc2DriverMonitorComponentTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2DriverMonitorComponents
+    SYNTAX       SEQUENCE OF Sc2DriverMonitorComponentEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table of components monitored by the driver monitor.
                   Foreign index sc2uUnitId is from sc2UnitTable."
     ::= { sc2DriverMonitoring 1 }
 
-sc2DriverMonitorComponents OBJECT-TYPE
-    SYNTAX       Sc2DriverMonitorComponents
+sc2DriverMonitorComponentEntry OBJECT-TYPE
+    SYNTAX       Sc2DriverMonitorComponentEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2uUnitId, sc2drvmonCompClass, sc2drvmonCompIndex }
     ::= { sc2DriverMonitorComponentTable 1 }
 
-Sc2DriverMonitorComponents ::= SEQUENCE
+Sc2DriverMonitorComponentEntry ::= SEQUENCE
 {
     sc2drvmonCompClass
         INTEGER,
@@ -5440,21 +5444,21 @@ sc2drvmonCompClass OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component class (index)"
-    ::= { sc2DriverMonitorComponents 1 }
+    ::= { sc2DriverMonitorComponentEntry 1 }
 
 sc2drvmonCompIndex OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component index (index, 1..n). This is an index over all component classes, but unit specific."
-    ::= { sc2DriverMonitorComponents 2 }
+    ::= { sc2DriverMonitorComponentEntry 2 }
 
 sc2drvmonCompName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Name or designation of the component"
-    ::= { sc2DriverMonitorComponents 3 }
+    ::= { sc2DriverMonitorComponentEntry 3 }
 
 sc2drvmonCompType OBJECT-TYPE
     SYNTAX       INTEGER
@@ -5466,42 +5470,42 @@ sc2drvmonCompType OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Component (bus) type"
-    ::= { sc2DriverMonitorComponents 4 }
+    ::= { sc2DriverMonitorComponentEntry 4 }
 
 sc2drvmonCompDriverName OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Name of the driver that created the event record"
-    ::= { sc2DriverMonitorComponents 5 }
+    ::= { sc2DriverMonitorComponentEntry 5 }
 
 sc2drvmonCompLocationDesignation OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Device location designation (if it is an adapter or other hardware component); e.g. 'PCI Slot #2' or 'IOB#1-FUNC#0'"
-    ::= { sc2DriverMonitorComponents 6 }
+    ::= { sc2DriverMonitorComponentEntry 6 }
 
 sc2drvmonCompLocationKey OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Device location key, used for identifying the component in other tables (like PCI device table); e.g. 'TYPE_PCI&BUS_3&DEV_14&FUNC_0'"
-    ::= { sc2DriverMonitorComponents 7 }
+    ::= { sc2DriverMonitorComponentEntry 7 }
 
 sc2drvmonCompStatus OBJECT-TYPE
     SYNTAX       CompStatus
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Status of the component; caused by specific error events, reset by corresponding 'component OK' events or by manual acknowledge"
-    ::= { sc2DriverMonitorComponents 8 }
+    ::= { sc2DriverMonitorComponentEntry 8 }
 
 sc2drvmonCompErrorAcknowledge OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-write
     STATUS       mandatory
     DESCRIPTION  "Acknowledge an error condition (reset error or warning status) of the component by writing a non-zero value (reading this object just returns the value 0)"
-    ::= { sc2DriverMonitorComponents 9 }
+    ::= { sc2DriverMonitorComponentEntry 9 }
 
 
 -- ----------------------------------------------------------------------------------------------
@@ -5519,7 +5523,7 @@ sc2drvmonCompErrorAcknowledge OBJECT-TYPE
 -- ----------------------------------------------------------------------------------------------
 
 sc2DriverMonitorMessageTable OBJECT-TYPE
-    SYNTAX       SEQUENCE OF Sc2DriverMonitorMessages
+    SYNTAX       SEQUENCE OF Sc2DriverMonitorMessageEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  "Table of messages gathered by the driver monitor. The messages are based
@@ -5529,15 +5533,15 @@ sc2DriverMonitorMessageTable OBJECT-TYPE
                   When sc2drvmonCompIndex is 0, the event could not be assigned to any component."
     ::= { sc2DriverMonitoring 2 }
 
-sc2DriverMonitorMessages OBJECT-TYPE
-    SYNTAX       Sc2DriverMonitorMessages
+sc2DriverMonitorMessageEntry OBJECT-TYPE
+    SYNTAX       Sc2DriverMonitorMessageEntry
     ACCESS       not-accessible
     STATUS       mandatory
     DESCRIPTION  ""
     INDEX   { sc2uUnitId, sc2msgTextLogLanguage, sc2drvmonCompClass, sc2drvmonCompIndex, sc2msgTextLogSeqNr }
     ::= { sc2DriverMonitorMessageTable 1 }
 
-Sc2DriverMonitorMessages ::= SEQUENCE
+Sc2DriverMonitorMessageEntry ::= SEQUENCE
 {
     sc2drvmonMsgSeqNr
         INTEGER,
@@ -5566,14 +5570,14 @@ sc2drvmonMsgSeqNr OBJECT-TYPE
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Driver message entry sequence number (index, 1..n)"
-    ::= { sc2DriverMonitorMessages 1 }
+    ::= { sc2DriverMonitorMessageEntry 1 }
 
 sc2drvmonMsgTimestamp OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Driver message entry time stamp (time_t = seconds since 1/1/1970, 0:00 AM as GMT)"
-    ::= { sc2DriverMonitorMessages 2 }
+    ::= { sc2DriverMonitorMessageEntry 2 }
 
 sc2drvmonMsgMessage OBJECT-TYPE
     SYNTAX       DisplayString
@@ -5581,28 +5585,28 @@ sc2drvmonMsgMessage OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Message entry string (multi-language;
                   not every language may be implemented, then English message has to be requested)"
-    ::= { sc2DriverMonitorMessages 3 }
+    ::= { sc2DriverMonitorMessageEntry 3 }
 
 sc2drvmonMsgEventId OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message entry error code (this code is a driver monitor specific error code)"
-    ::= { sc2DriverMonitorMessages 4 }
+    ::= { sc2DriverMonitorMessageEntry 4 }
 
 sc2drvmonMsgSeverity OBJECT-TYPE
     SYNTAX       OsLogSeverity
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message entry severity (may be different from original event log severity)"
-    ::= { sc2DriverMonitorMessages 5 }
+    ::= { sc2DriverMonitorMessageEntry 5 }
 
 sc2drvmonMsgErrorCode OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Message entry error code (must be used to get summary, causes and resolutions from sc2MessageLogActionHintTable table)"
-    ::= { sc2DriverMonitorMessages 6 }
+    ::= { sc2DriverMonitorMessageEntry 6 }
 
 sc2drvmonOrigLogMessage OBJECT-TYPE
     SYNTAX       DisplayString
@@ -5610,28 +5614,28 @@ sc2drvmonOrigLogMessage OBJECT-TYPE
     STATUS       mandatory
     DESCRIPTION  "Original operating system event log / syslog entry message (only available in the server's original language or in english,
                   depending on the driver that created that entry)"
-    ::= { sc2DriverMonitorMessages 7 }
+    ::= { sc2DriverMonitorMessageEntry 7 }
 
 sc2drvmonOrigLogSource OBJECT-TYPE
     SYNTAX       DisplayString
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Original log entry source name"
-    ::= { sc2DriverMonitorMessages 8 }
+    ::= { sc2DriverMonitorMessageEntry 8 }
 
 sc2drvmonOrigLogId OBJECT-TYPE
     SYNTAX       INTEGER
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Original log entry ID number (may not be available for some platforms/controllers, then ID = 0)"
-    ::= { sc2DriverMonitorMessages 9 }
+    ::= { sc2DriverMonitorMessageEntry 9 }
 
 sc2drvmonOrigLogSeverity OBJECT-TYPE
     SYNTAX       OsLogSeverity
     ACCESS       read-only
     STATUS       mandatory
     DESCRIPTION  "Original event log entry severity"
-    ::= { sc2DriverMonitorMessages 10 }
+    ::= { sc2DriverMonitorMessageEntry 10 }
 
 
 sc2drvmonTableUpdateCount OBJECT-TYPE
