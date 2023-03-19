@@ -1,6 +1,6 @@
 zabbix_export:
   version: '6.0'
-  date: '2023-03-15T17:38:56Z'
+  date: '2023-03-19T22:38:41Z'
   groups:
     -
       uuid: f38f26797f4b4a6e97dfda6d429726fd
@@ -129,8 +129,9 @@ zabbix_export:
           type: SNMP_AGENT
           snmp_oid: .1.3.6.1.2.1.1.3.0
           key: SNMPv2-MIB.sysUpTime
-          delay: 1d
+          delay: 30s
           history: 30d
+          trends: '0'
           units: uptime
           description: 'The time (in hundredths of a second) since the network management portion of the system was last re-initialized.'
           preprocessing:
@@ -142,6 +143,15 @@ zabbix_export:
             -
               tag: Application
               value: 'SNMPv2-MIB::system'
+          triggers:
+            -
+              uuid: 34f3041df4d24c0ba918a1b3abcec1dc
+              expression: 'last(/Template Module SNMP SNMPv2-MIB - system/SNMPv2-MIB.sysUpTime)<10m'
+              name: 'Host has been restarted'
+              event_name: '{HOST.NAME} has been restarted (uptime < 10m)'
+              priority: WARNING
+              description: 'Uptime is less than 10 minutes.'
+              manual_close: 'YES'
       discovery_rules:
         -
           uuid: 6a1593fdc18f49d895f68f449d8176e7
