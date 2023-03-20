@@ -1,0 +1,20 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-03-20T13:02:13Z'
+  groups:
+    -
+      uuid: 3e08970fa1ea4adf82a028f861f937d3
+      name: Templates/Private
+  templates:
+    -
+      uuid: 87d9be4a3fc94596b5bef10b29bd0790
+      template: 'Template Actelis Modular by SNMP'
+      name: 'Template Actelis Modular by SNMP'
+      templates:
+        -
+          name: 'Template Module Interfaces Simple SNMP'
+        -
+          name: 'Template Module SNMP SNMPv2-MIB - system'
+      groups:
+        -
+          name: Templates/Private
