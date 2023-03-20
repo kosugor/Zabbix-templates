@@ -1,0 +1,20 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-03-20T13:12:43Z'
+  groups:
+    -
+      uuid: 3e08970fa1ea4adf82a028f861f937d3
+      name: Templates/Private
+  templates:
+    -
+      uuid: 0657c8f99923495790f655b9197071b6
+      template: 'Template Westermo Lynx Modular by SNMP'
+      name: 'Template Westermo Lynx Modular by SNMP'
+      templates:
+        -
+          name: 'Template Module Interfaces SNMP'
+        -
+          name: 'Template Module SNMP SNMPv2-MIB - system'
+      groups:
+        -
+          name: Templates/Private
