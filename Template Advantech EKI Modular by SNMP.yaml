@@ -1,0 +1,20 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-03-20T12:38:02Z'
+  groups:
+    -
+      uuid: 3e08970fa1ea4adf82a028f861f937d3
+      name: Templates/Private
+  templates:
+    -
+      uuid: 61f9d3ea3113467c9a1578ef0391f59a
+      template: 'Template Advantech EKI Modular by SNMP'
+      name: 'Template Advantech EKI Modular by SNMP'
+      templates:
+        -
+          name: 'Template Module Interfaces Simple SNMP'
+        -
+          name: 'Template Module SNMP SNMPv2-MIB - system'
+      groups:
+        -
+          name: Templates/Private

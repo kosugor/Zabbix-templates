@@ -1,0 +1,20 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-03-20T12:56:12Z'
+  groups:
+    -
+      uuid: 3e08970fa1ea4adf82a028f861f937d3
+      name: Templates/Private
+  templates:
+    -
+      uuid: cc9d0cc6871b4520b8eaf92c270558e9
+      template: 'Template MOXA-IO-E2212 Modular by SNMP'
+      name: 'Template MOXA-IO-E2212 Modular by SNMP'
+      templates:
+        -
+          name: 'Template Module Interfaces Simple SNMP'
+        -
+          name: 'Template Module SNMP SNMPv2-MIB - system'
+      groups:
+        -
+          name: Templates/Private
